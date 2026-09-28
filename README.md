@@ -101,6 +101,20 @@ ModelScope DINOv3 H+ → DPT 式多层解码器 → 软语义概率
 
 ## 环境与数据
 
+### ModelScope 资产
+
+完整数据集、DINOv3 权重和 F 版本训练检查点托管在
+[ModelScope 数据集 sky931/SHM2026](https://modelscope.cn/datasets/sky931/SHM2026/files)，
+不会进入 Git 源码历史。下载并校验全部资产：
+
+```bash
+uv run python scripts/download_modelscope_assets.py \
+  --output release_assets/SHM2026
+```
+
+脚本下载后会依据 `manifest.sha256` 逐文件校验。下载目录包含
+`dataset/`、`models/dinov3-vith16plus/` 和 `checkpoints/bridge_f_v1/`。
+
 当前已在 RTX 5090 32GB、CUDA Toolkit 12.8 上运行；PyTorch 2.8.0+cu128、gsplat 1.5.3、Transformers 4.57.6 记录在锁文件。第一次渲染会编译 gsplat CUDA 扩展。CPU 可运行数据和数学单元测试，3D训练需要 NVIDIA GPU。
 
 ```bash

@@ -14,6 +14,7 @@ project_progress_20260918/
 artifacts/
 runs/
 outputs/
+release_assets/
 SHM_2026.pdf
 
 # Model weights and binary build products. Public release metadata lives in
