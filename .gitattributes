@@ -11,4 +11,3 @@
 *.mp4 binary
 *.pt binary
 *.safetensors binary
-models/dinov3-vith16plus/model.safetensors filter=lfs diff=lfs merge=lfs -text
