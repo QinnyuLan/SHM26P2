@@ -1,0 +1,43 @@
+seed: 42
+manifest: artifacts/prepared/manifest.json
+output: runs/save_zero_preflight
+warmstart: runs/strong_semantic_coupled/last.pt
+warmstart_reset_refiner: false
+refiner:
+  type: multiscale
+  channels: 64
+  residual_bound: 6.0
+  context: pyramid_strip
+freeze_geometry: false
+freeze_rgb: true
+train_labeled_only: false
+view_sampling: shuffle
+independent_view_rng: true
+view_sampler_seed: 42
+steps: 2
+train_scale: 1.0
+progressive_resolution: false
+semantic_start: 1000000
+refine_start: 1000000
+semantic_weight: 0.0
+semantic_geometry_weight: 0.0
+class_weight_power: 0.25
+raw_class_weight_power: 0.25
+refiner_field_grad: true
+pseudo_dir: null
+pseudo_weight: 0.0
+pseudo_refiner_weight: 0.0
+multiview_fusion: false
+multiview_weight: 0.0
+local_teacher_kd: true
+supervised_teacher_priority: true
+optimize_cameras: false
+densification: none
+region_rgb_weight: 0.0
+log_every: 1
+save_every: 0
+eval_every: 0
+eval_scale: 1.0
+parameter_scope: opacity_only
+sparse_depth_weight: 0.0
+opacity_entropy_weight: 0.0

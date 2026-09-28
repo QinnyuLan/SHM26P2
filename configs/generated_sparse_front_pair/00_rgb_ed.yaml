@@ -1,0 +1,64 @@
+# Fixed 2k engineering control: RGB+ED .05 common; only front weight differs.
+seed: 42
+manifest: artifacts/prepared/manifest.json
+output: runs/sparse_front_pair/00_rgb_ed
+warmstart: runs/strong_semantic_coupled/last.pt
+warmstart_reset_refiner: false
+refiner:
+  type: multiscale
+  channels: 64
+  residual_bound: 6.0
+  context: pyramid_strip
+freeze_geometry: false
+freeze_rgb: true
+train_labeled_only: false
+view_sampling: shuffle
+independent_view_rng: true
+view_sampler_seed: 42
+steps: 2000
+train_scale: 1.0
+progressive_resolution: false
+semantic_start: 1000000
+refine_start: 1000000
+semantic_weight: 0.0
+semantic_geometry_weight: 0.0
+class_weight_power: 0.25
+raw_class_weight_power: 0.25
+refiner_field_grad: true
+pseudo_dir: null
+pseudo_weight: 0.0
+pseudo_refiner_weight: 0.0
+multiview_fusion: false
+multiview_weight: 0.0
+local_teacher_kd: true
+supervised_teacher_priority: true
+optimize_cameras: false
+densification: none
+region_rgb_weight: 0.0
+log_every: 100
+save_every: 2000
+eval_every: 2000
+eval_scale: 1.0
+parameter_scope: opacity_only
+sparse_depth:
+  colmap_images_path: Dataset/camera_parameters/images.txt
+  min_observations: 3
+  max_reprojection_error_px: 1.0
+  max_current_reprojection_error_px: 2.0
+  max_relative_depth_std: 0.1
+  relative_depth_std_scale: 0.02
+  observation_saturation: 8
+  min_confidence: 0.05
+  border_px: 2
+  min_alpha: 0.5
+  max_targets_per_view: 4096
+  uv_mode: observed
+  loss_kind: log_huber
+  huber_delta: 0.1
+  near_error_fraction: 0.1
+sparse_depth_weight: 0.05
+opacity_entropy_weight: 0.0
+camera_attribution: false
+camera_quality_weighting: false
+opacity_reset_every: 0
+sparse_front_weight: 0.0

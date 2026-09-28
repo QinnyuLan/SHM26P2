@@ -1,0 +1,29 @@
+seed: 42
+manifest: artifacts/prepared/manifest.json
+output: runs/refiner_multiscale_v1
+warmstart: runs/refined/last.pt
+steps: 6000
+train_scale: 1.0
+progressive_resolution: true
+semantic_start: 1
+refine_start: 1
+semantic_weight: 1.0
+class_weight_power: 0.25
+refiner:
+  type: multiscale
+  channels: 64
+  residual_bound: 6.0
+  context: pyramid_strip
+freeze_geometry: true
+train_labeled_only: true
+view_sampling: shuffle
+densification: none
+optimize_cameras: false
+semantic_geometry_weight: 0
+multiview_fusion: false
+pseudo_dir: null
+region_rgb_weight: 0
+save_every: 1000
+eval_every: 2000
+eval_scale: 1.0
+log_every: 100

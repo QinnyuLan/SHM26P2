@@ -1,0 +1,23 @@
+{
+  "warmstart": "runs/refiner_multiscale_v1/last.pt",
+  "steps": 3000,
+  "labeled_train_views": 259,
+  "teacher_and_fusion": false,
+  "geometry_rgb_camera_frozen": true,
+  "raw_p3d_gt": "Full native grid at every step",
+  "final_gt": "Full native grid or aligned crop, no label interpolation/padding",
+  "crop_size": 768,
+  "crop_probability": 0.5,
+  "crop_seed": 42,
+  "stateless_crop_steps": 1536,
+  "fullframe_steps_in_mix": 1464,
+  "view_sampling": "independent shuffle seed42, identical across arms",
+  "primary_endpoint": "last3000, not checkpoint selection",
+  "only_treatment_differences": [
+    "output",
+    "refiner_crop_probability"
+  ],
+  "preflight": "Two real 2-step runs; branch checks use probabilities0 and1 to ensure both paths are exercised, main treatment probability remains.5",
+  "refiner_lr": 0.0003,
+  "role": "Engineering augmentation control, not a novel mechanism"
+}

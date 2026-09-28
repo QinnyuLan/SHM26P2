@@ -1,0 +1,82 @@
+{
+  "protocol": "renderer_transfer_v1",
+  "manifest": "artifacts/prepared/manifest.json",
+  "manifest_sha256": "551546979a583d46e840bd485559721f361bc28fa4dca60826374ceb74b315fa",
+  "teacher_checkpoint": "runs/teacher_render_adapt_v1/best.pt",
+  "teacher_checkpoint_sha256": "00f5b84ac9a56c39512c5b8e43f70110397923feea1a2b4c78bdffd1f5524bff",
+  "teacher_training_renderer": "runs/strong_rgb/last.pt",
+  "teacher_training_renderer_sha256": "3f57584a785110a70a2b4b52a4b73105b23448b223ca398b1ca160a0c91e1edb",
+  "inference_renderer": "runs/support_split_semantic_coupled/last.pt",
+  "inference_renderer_sha256": "a329fc70d582972fc338715765304b99da208c821ee34288809db500d5acd6b9",
+  "students": {
+    "base": {
+      "checkpoint": "runs/support_split_semantic_coupled/last.pt",
+      "checkpoint_sha256": "a329fc70d582972fc338715765304b99da208c821ee34288809db500d5acd6b9",
+      "evaluation": "runs/support_split_semantic_coupled/evaluation_native/metrics.json",
+      "evaluation_sha256": "b68fab706a7fbf9652606c81c4b12c4920081d745e743e582db113d3e077db25"
+    },
+    "00_zero": {
+      "checkpoint": "runs/h3_moments/00_zero/last.pt",
+      "checkpoint_sha256": "92714039847cda13b48b62bebee48b81d1f0f2990e211879af1b247ea692bacc",
+      "evaluation": "runs/h3_moments/00_zero/evaluation_native/metrics.json",
+      "evaluation_sha256": "69f302b28322ec79d945d2c4b5b25be271820f0f50128c034f9f7417d9d89550"
+    },
+    "01_variance": {
+      "checkpoint": "runs/h3_moments/01_variance/last.pt",
+      "checkpoint_sha256": "53353899cd48d92dfbfc30f71f6db35e4e69a3e024d8a6359704240b1503e36d",
+      "evaluation": "runs/h3_moments/01_variance/evaluation_native/metrics.json",
+      "evaluation_sha256": "725ffc6dd9aba2338fdfb56cd9e626bb48e6c59029e911d43ba3212a2546cba5"
+    },
+    "02_cross": {
+      "checkpoint": "runs/h3_moments/02_cross/last.pt",
+      "checkpoint_sha256": "22bc8a2ddb260f93cb01b17857c97b2bb0873038efdb9318545cb2bdbb045226",
+      "evaluation": "runs/h3_moments/02_cross/evaluation_native/metrics.json",
+      "evaluation_sha256": "817f4533edc7632f05af77e1139175c4be5b8e55af25ebf54d9a683b6f162223"
+    }
+  },
+  "h3_report": "runs/h3_moments/h3_report.json",
+  "h3_report_sha256": "3b23df3dfb63663a30a614ada28d9610289ca078d11dc3f290f5ad662ce0359e",
+  "source_snapshot": "runs/h3_moments_preflight_v2/source_snapshot",
+  "source_hashes": {
+    "bridge_rgs/__init__.py": "dbfc7c6307632a9c8ddba2ec138c1a5222a588a23bbaf913ca777467c1c3f93a",
+    "bridge_rgs/averaging.py": "120724812f8c98a474e0531c5b66eb6dc2afdc82933ce5e54f63e778ae657162",
+    "bridge_rgs/cli.py": "063dd261136111756e28c7655aa7ab0f92a5f287e634ee5585d0eff9c3c0c861",
+    "bridge_rgs/data.py": "ff9ca73581b9440077e65bcef0fc893e391222d2933e8df2ab25be14bf580634",
+    "bridge_rgs/densification.py": "0b1f4073086afce3358d0c7fb4fcc6cb1d87a18cb0981ac411c4aabadeb5cfea",
+    "bridge_rgs/depth_moments.py": "b59d81036f34d24bacf2f3085dc01a6f097958dad48b54d6e49d59d618020ed8",
+    "bridge_rgs/evaluate.py": "619be2caa699a958b812f5ee1bb1e616d09e1fc49c461be4acd5f518d41728ec",
+    "bridge_rgs/export.py": "aef22ad29a4f5274936d2ae0685264e7caab24c910554f3bfb7e11746780cee4",
+    "bridge_rgs/fusion.py": "5f9d59c9cb7d7a9e7357a43bb79e16fcd80e5431a999cad0e7e4e7fdc6453653",
+    "bridge_rgs/geometry.py": "890f67d33492e22413fe62bdb1af1543820446880a43af7f64cc11aaab870e7b",
+    "bridge_rgs/io.py": "7f0f6c2a234aed612783ae93d3ffda9328c9bad604c92946578278b9a84fbcad",
+    "bridge_rgs/losses.py": "76eb8a8c15eea71dd0110f461098f1997620c93095915ca6d0fb771f9a74f25e",
+    "bridge_rgs/model.py": "e55882c6cf52da5db8e4b67b1357534b1985058a80c4c969a9a06f652b625ca2",
+    "bridge_rgs/prepare.py": "b964cb90e9117cd2bf54df0b163f2e4c56ce23b98d559dabcd9892afd43bd962",
+    "bridge_rgs/projection_stress.py": "e47bf530525925d97d7ea0e17072ef2fbd7b0da34d3b4d63efe61d85d1461888",
+    "bridge_rgs/ray_support.py": "f4c532343ae40c85463fe7601ded0ce81f3d342140fb8465cd04daed19efcadc",
+    "bridge_rgs/ray_termination.py": "e111c41bd1d4cf2061364187f3eb9eb852669a8146a53474307fb611135bdae7",
+    "bridge_rgs/refinement.py": "2edbb63ed8ba8ceba0bd5f4e5a8bdc94e6c5a10d2d0f049a24457d494fcfd68a",
+    "bridge_rgs/refiner_crops.py": "eee619d288e470e22262ff45ba007d3932018703f1c5b49869aab46d028cfe61",
+    "bridge_rgs/reliability.py": "3c579848a3421254834525bc0b668a9249649a96075a7a028524c9521608404d",
+    "bridge_rgs/semantic_schedule.py": "0c5d9cad8f7fe0fc37d9410b2547ca260e33d3ce2fa14451784ecd3e8390cbc2",
+    "bridge_rgs/semantic_transfer.py": "0c8e1374aaf3d29b3205467c771b79a6123c9b5863cfcf6cc91872aea944cc85",
+    "bridge_rgs/teacher.py": "0607a2011f617d034c91bf23bcc0e71f5127cda75515850aaf4bd370d07bb79e",
+    "bridge_rgs/teacher_adapters.py": "048a5316a5d3875df089a226192a0daf3d26dd6d6a14c37828678dd40dedbc2f",
+    "bridge_rgs/teacher_domains.py": "d6fcc29da1ee656308d5f2a9c13b064a97f111faaf68b3877fb64990f4a8e5cb",
+    "bridge_rgs/train.py": "9dc1c09f36c9db390bf1f3baebc9f54037e6e957bb91b01aa5b7c039e890dd38"
+  },
+  "output": "runs/teacher_renderer_transfer_support",
+  "inference": {
+    "tile_size": 768,
+    "stride": 512,
+    "flip": true,
+    "context_weight": 0.25,
+    "context_short_side": 768,
+    "teacher_weight": 0.5
+  },
+  "reuse": "One complete tiled/flip/context prediction protocol per common camera RGB, reused by four student heads",
+  "prediction_inputs": "camera metadata and common support field only; no real validation photographs; labels/validity opened only after all predictions for the camera finish",
+  "store": "uint8 prediction PNG and JSON only; no probability NPZ",
+  "selection": "All four predeclared students and single fixed weight; no weight search or adaptation",
+  "scope": "Costly engineering transfer/ensemble control, not a new mechanism or an upper bound"
+}

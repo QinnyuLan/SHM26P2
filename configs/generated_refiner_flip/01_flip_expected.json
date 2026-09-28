@@ -1,0 +1,32 @@
+{
+  "view_indices": [
+    246,
+    232,
+    244,
+    82,
+    94,
+    54,
+    132,
+    3
+  ],
+  "view_names": [
+    "285.png",
+    "270.png",
+    "283.png",
+    "096.png",
+    "108.png",
+    "063.png",
+    "151.png",
+    "005.png"
+  ],
+  "flips": [
+    true,
+    false,
+    true,
+    false,
+    false,
+    true,
+    false,
+    true
+  ]
+}

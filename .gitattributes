@@ -1,0 +1,14 @@
+* text=auto eol=lf
+*.py text diff=python
+*.md text diff=markdown
+*.json text diff
+*.yaml text diff
+*.yml text diff
+*.lock text diff
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.mp4 binary
+*.pt binary
+*.safetensors binary
+models/dinov3-vith16plus/model.safetensors filter=lfs diff=lfs merge=lfs -text

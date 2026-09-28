@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+title: "Bridge-RGS: Camera-Robust, Structure-Adaptive RGB-Semantic Gaussian Reconstruction"
+version: 0.1.0
+date-released: 2026-09-28
+type: software
+abstract: >-
+  Research code for jointly reconstructing bridge RGB appearance and semantic
+  masks with shared 3D Gaussian geometry and camera-reliability-aware fusion.
+authors:
+  - name: "Bridge-RGS contributors"
+repository-code: "https://github.com/REPLACE_WITH_YOUR_ACCOUNT/bridge-rgs"
+license: Apache-2.0
+keywords:
+  - 3D Gaussian Splatting
+  - semantic reconstruction
+  - bridge inspection
+  - DINOv3

@@ -1,0 +1,50 @@
+{
+  "warmstart": "runs/strong_semantic_averaged/last.pt",
+  "warmstart_sha256": "c6060e559b9d006a97c4fb7ae198c3fb629ec976de95a05e0825d377835dd9fd",
+  "steps": 3000,
+  "primary_endpoint": "last3000; no midpoint selection",
+  "train_labeled_views": 259,
+  "view_sampling": "shuffle independent seed42 identical across arms",
+  "source_snapshot": "runs/semantic_lr_preflight/source_snapshot",
+  "source_hashes": {
+    "bridge_rgs/__init__.py": "dbfc7c6307632a9c8ddba2ec138c1a5222a588a23bbaf913ca777467c1c3f93a",
+    "bridge_rgs/averaging.py": "120724812f8c98a474e0531c5b66eb6dc2afdc82933ce5e54f63e778ae657162",
+    "bridge_rgs/cli.py": "063dd261136111756e28c7655aa7ab0f92a5f287e634ee5585d0eff9c3c0c861",
+    "bridge_rgs/data.py": "ff9ca73581b9440077e65bcef0fc893e391222d2933e8df2ab25be14bf580634",
+    "bridge_rgs/densification.py": "0b1f4073086afce3358d0c7fb4fcc6cb1d87a18cb0981ac411c4aabadeb5cfea",
+    "bridge_rgs/evaluate.py": "619be2caa699a958b812f5ee1bb1e616d09e1fc49c461be4acd5f518d41728ec",
+    "bridge_rgs/export.py": "aef22ad29a4f5274936d2ae0685264e7caab24c910554f3bfb7e11746780cee4",
+    "bridge_rgs/fusion.py": "5f9d59c9cb7d7a9e7357a43bb79e16fcd80e5431a999cad0e7e4e7fdc6453653",
+    "bridge_rgs/geometry.py": "890f67d33492e22413fe62bdb1af1543820446880a43af7f64cc11aaab870e7b",
+    "bridge_rgs/io.py": "7f0f6c2a234aed612783ae93d3ffda9328c9bad604c92946578278b9a84fbcad",
+    "bridge_rgs/losses.py": "76eb8a8c15eea71dd0110f461098f1997620c93095915ca6d0fb771f9a74f25e",
+    "bridge_rgs/model.py": "b2367cdf4e31cc5fb98a469dee88cdc8e50b4a0fc5b9453aa82ff2401ef5ebf9",
+    "bridge_rgs/prepare.py": "b964cb90e9117cd2bf54df0b163f2e4c56ce23b98d559dabcd9892afd43bd962",
+    "bridge_rgs/projection_stress.py": "e47bf530525925d97d7ea0e17072ef2fbd7b0da34d3b4d63efe61d85d1461888",
+    "bridge_rgs/ray_support.py": "f4c532343ae40c85463fe7601ded0ce81f3d342140fb8465cd04daed19efcadc",
+    "bridge_rgs/ray_termination.py": "f5f1eb4e638d3e653d069a7af8daad064f983bb6bb7bc648ea6a6830a4ebbd0f",
+    "bridge_rgs/refinement.py": "fbb5a71687bc036fa5ec4b7b6634338b04cd6a8c0d0e11d7d369251f39616b16",
+    "bridge_rgs/refiner_crops.py": "9420497c36657ddb7091d6e0aa819d3ee1d22448823156a72ee4cc0807c5e26f",
+    "bridge_rgs/reliability.py": "3c579848a3421254834525bc0b668a9249649a96075a7a028524c9521608404d",
+    "bridge_rgs/semantic_schedule.py": "0c5d9cad8f7fe0fc37d9410b2547ca260e33d3ce2fa14451784ecd3e8390cbc2",
+    "bridge_rgs/semantic_transfer.py": "0c8e1374aaf3d29b3205467c771b79a6123c9b5863cfcf6cc91872aea944cc85",
+    "bridge_rgs/teacher.py": "0607a2011f617d034c91bf23bcc0e71f5127cda75515850aaf4bd370d07bb79e",
+    "bridge_rgs/teacher_adapters.py": "048a5316a5d3875df089a226192a0daf3d26dd6d6a14c37828678dd40dedbc2f",
+    "bridge_rgs/teacher_domains.py": "d6fcc29da1ee656308d5f2a9c13b064a97f111faaf68b3877fb64990f4a8e5cb",
+    "bridge_rgs/train.py": "b139ecd2430f108e86be452c6ea24882a1738478bf3443fc7564ef012639b69b"
+  },
+  "schedule": "m(t)=0.1+0.9*(1+cos(pi*(t-1)/2999))/2; constant control m(t)=1",
+  "base_lrs": {
+    "sem_features": 0.01,
+    "classifier": 0.001,
+    "refiner": 0.0003
+  },
+  "optimizer_reset": "fresh Adam in both warmstart arms, preserve all model tensors",
+  "geometry_rgb_camera_frozen": true,
+  "teacher_fusion_crop": false,
+  "only_differences": [
+    "output",
+    "semantic_lr_schedule.type"
+  ],
+  "role": "Engineering convergence control; not a novel mechanism"
+}

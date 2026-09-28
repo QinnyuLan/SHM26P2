@@ -1,0 +1,54 @@
+# Complete gsplat 1.5.3 MCMC-inspired engineering reference, not a one-factor
+# comparison or an exact author reproduction. The local AA renderer, learned
+# background and deterministic 2k shell are retained. Physical xyz/SH colors
+# are unchanged at initialization; opacity and scales follow the MCMC recipe.
+# View shuffle uses its own NumPy Generator(seed=42). Strategy sampling/noise
+# use Torch CUDA RNG, checkpointed independently of the view sampler.
+seed: 42
+manifest: artifacts/prepared_corner_v2/manifest.json
+pixel_protocol: colmap_corner_v2
+output: runs/rgb_mcmc_reference_500k
+steps: 30000
+background_points: 2000
+initial_opacity: 0.5
+initial_scale_multiplier: 0.1
+train_scale: 1.0
+progressive_resolution: false
+view_sampling: shuffle
+independent_view_rng: true
+view_sampler_seed: 42
+semantic_start: 1000000
+refine_start: 1000000
+semantic_weight: 0.0
+semantic_geometry_weight: 0.0
+semantic_initialization: false
+pseudo_dir: null
+multiview_fusion: false
+region_rgb_weight: 0.0
+sh_interval: 1000
+optimize_cameras: false
+camera_stop: 0
+camera_attribution: false
+camera_quality_weighting: false
+structure_guided: false
+recycle_count: 0
+densification: mcmc_reference
+max_gaussians: 500000
+opacity_lr: 0.05
+mip_filter: null
+mcmc_reference:
+  cap_max: 500000
+  noise_lr: 500000.0
+  refine_start_iter: 500
+  refine_stop_iter: 25000
+  refine_every: 100
+  min_opacity: 0.005
+  opacity_reg: 0.01
+  scale_reg: 0.01
+# MCMC skips legacy post-Adam quaternion/scale/opacity clipping; the installed
+# strategy owns its alpha correction. Parameters and gradients are checked
+# at step 1, every 100 steps and the endpoint; non-finite losses fail each step.
+log_every: 100
+save_every: 5000
+eval_every: 0
+eval_scale: 1.0

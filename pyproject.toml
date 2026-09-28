@@ -1,0 +1,42 @@
+[project]
+name = "bridge-rgs"
+version = "0.1.0"
+description = "Camera-reliability-guided RGB and semantic Gaussian bridge reconstruction"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+  "torch==2.8.0", "torchvision==0.23.0", "gsplat==1.5.3",
+  "numpy>=2.0,<3", "scipy>=1.14", "opencv-python-headless>=4.10",
+  "pillow>=11", "pyyaml>=6", "tqdm>=4.66", "ninja>=1.11",
+  "transformers>=4.56,<5", "modelscope>=1.30", "safetensors>=0.6",
+  "accelerate>=1.0", "einops>=0.8", "scikit-image>=0.25", "lpips>=0.1.4",
+  "matplotlib>=3.9", "setuptools>=75",
+]
+
+[dependency-groups]
+dev = ["pytest>=8", "ruff>=0.11"]
+
+[project.scripts]
+bridge-rgs = "bridge_rgs.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/bridge_rgs"]
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu128" }
+torchvision = { index = "pytorch-cu128" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+

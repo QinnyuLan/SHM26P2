@@ -1,0 +1,50 @@
+seed: 42
+manifest: artifacts/prepared/manifest.json
+output: runs/refiner_crop_pair/00_fullframe
+warmstart: runs/refiner_multiscale_v1/last.pt
+steps: 3000
+train_scale: 1.0
+progressive_resolution: false
+semantic_start: 1
+refine_start: 1
+semantic_weight: 1.0
+class_weight_power: 0.25
+refiner:
+  type: multiscale
+  channels: 64
+  residual_bound: 6.0
+  context: pyramid_strip
+freeze_geometry: true
+train_labeled_only: true
+view_sampling: shuffle
+densification: none
+optimize_cameras: false
+semantic_geometry_weight: 0.0
+multiview_fusion: false
+pseudo_dir: null
+region_rgb_weight: 0
+save_every: 1500
+eval_every: 1500
+eval_scale: 1.0
+log_every: 100
+local_teacher_kd: true
+supervised_teacher_priority: true
+freeze_rgb: true
+initial_gaussians: 69726
+refiner_field_grad: true
+warmstart_reset_refiner: false
+independent_view_rng: true
+view_sampler_seed: 42
+pseudo_weight: 0.0
+pseudo_refiner_weight: 0.0
+pseudo_threshold: 0.8
+pseudo_class_reweight_cap: 3.0
+multiview_weight: 0.0
+projection_uncertainty: false
+fusion_every: 200
+fusion_points: 4096
+refiner_crop_size: 768
+refiner_crop_seed: 42
+opacity_entropy_weight: 0.0
+sparse_depth_weight: 0.0
+refiner_crop_probability: 0.0

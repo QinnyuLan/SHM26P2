@@ -1,0 +1,51 @@
+# RGB140-inspired mixed-gradient reference; NOT RGB150 exact reproduction.
+# Same v2 data/init/AA renderer/progressive resolution/optimization as our
+# repaired 30k RGB recipe, except opacity LR .025 and explicit RGB-only policy.
+seed: 42
+manifest: artifacts/prepared_corner_v2/manifest.json
+pixel_protocol: colmap_corner_v2
+output: /mnt/data/SHM2026/runs/rgb140_mip_filter_500k
+steps: 30000
+background_points: 2000
+train_scale: 1.0
+progressive_resolution: true
+view_sampling: shuffle
+independent_view_rng: false
+semantic_start: 1000000
+refine_start: 1000000
+semantic_weight: 0.0
+semantic_geometry_weight: 0.0
+semantic_initialization: false
+pseudo_dir: null
+multiview_fusion: false
+region_rgb_weight: 0.0
+sh_interval: 1000
+optimize_cameras: false
+camera_stop: 0
+camera_attribution: false
+camera_quality_weighting: false
+structure_guided: false
+recycle_count: 0
+densification: rgb140_mixed
+max_gaussians: 500000
+opacity_lr: 0.025
+mixed_gradient:
+  signed_clone_threshold: 0.0002
+  absolute_split_threshold: 0.0004
+  small_scale_fraction: 0.01
+  prune_scale_fraction: 0.1
+  prune_opacity: 0.005
+  max_gaussians: 500000
+  refine_start: 500
+  refine_stop: 15000
+  refine_every: 100
+  reset_every: 3000
+  reset_opacity: 0.01
+log_every: 100
+save_every: 5000
+eval_every: 0
+eval_scale: 1.0
+
+# Strict filter-only intervention: original raw prune/reset remain unchanged.
+mip_filter:
+  enabled: true

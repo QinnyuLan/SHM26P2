@@ -1,0 +1,309 @@
+{
+  "status": "pending_completed_checkpoint_and_official_evaluation",
+  "protocol": "paired_render_student_sensitivity_corner_v2_v1",
+  "created_utc": "2026-09-26T19:56:08.291787+00:00",
+  "manifest": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/manifest.json",
+  "pending_checkpoint_path": "/home/sky/workspace/SHM2026/runs/corner_v2_semantic_coupled/last.pt",
+  "checkpoint": null,
+  "checkpoint_sha256": null,
+  "official_receipt": null,
+  "source_snapshot": null,
+  "source_hashes": null,
+  "output": "/home/sky/workspace/SHM2026/runs/paired_render_sensitivity16",
+  "sample_indices": [
+    0,
+    17,
+    34,
+    51,
+    68,
+    86,
+    103,
+    120,
+    137,
+    154,
+    172,
+    189,
+    206,
+    223,
+    240,
+    258
+  ],
+  "sample_names": [
+    "002.png",
+    "021.png",
+    "041.png",
+    "059.png",
+    "079.png",
+    "100.png",
+    "118.png",
+    "137.png",
+    "156.png",
+    "176.png",
+    "200.png",
+    "220.png",
+    "241.png",
+    "259.png",
+    "278.png",
+    "300.png"
+  ],
+  "input_hashes": {
+    "manifest": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/manifest.json",
+      "sha256": "91b41aeecedc352e4882eb80a1bb635d479ae432251a4c96c85a9dc110cbb327"
+    },
+    "uv_lock": {
+      "path": "/home/sky/workspace/SHM2026/uv.lock",
+      "sha256": "01cf5bf2fcbb0704989730d7fad794b519094534b6c50e89007c11fe7d630177"
+    },
+    "002.png:image_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/images/002.png",
+      "sha256": "5af26ea06608d4902400b674ba37a1e71e0af3dd226663fe635c6c41bc28f6a8"
+    },
+    "002.png:mask_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/masks/002.png",
+      "sha256": "4963d26ed8f727adcc8ab15d322df092afcebd62fdda20ba988ecedbdbca4649"
+    },
+    "002.png:valid_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/valid/camera_1.png",
+      "sha256": "5c2646d62c8fe901f5688b82e56a247a55ee0f8ef47dcfe32b0c2bf3d42cfbae"
+    },
+    "021.png:image_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/images/021.png",
+      "sha256": "a9838bab1ffc4d9e1f4b0965f1d98bd76fce815f74b49a36dc5aff2be7154f14"
+    },
+    "021.png:mask_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/masks/021.png",
+      "sha256": "a46be09b39080fa5c18606fced0443083e17e7b6ad2f7b6961ecc4fba3a869cb"
+    },
+    "021.png:valid_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/valid/camera_1.png",
+      "sha256": "5c2646d62c8fe901f5688b82e56a247a55ee0f8ef47dcfe32b0c2bf3d42cfbae"
+    },
+    "041.png:image_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/images/041.png",
+      "sha256": "106c3b2bb366bf466ae6684acf81c0737ef93992685e133a168a84fd31a01b25"
+    },
+    "041.png:mask_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/masks/041.png",
+      "sha256": "ecac2657523dadb187347fb97d29a356386bf7e2d6ece0afdcc47fda1cd448c9"
+    },
+    "041.png:valid_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/valid/camera_1.png",
+      "sha256": "5c2646d62c8fe901f5688b82e56a247a55ee0f8ef47dcfe32b0c2bf3d42cfbae"
+    },
+    "059.png:image_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/images/059.png",
+      "sha256": "de995805ac5e08767260e1bdaca9e78cfdfa1bac336994f5c69c16a41e2698c1"
+    },
+    "059.png:mask_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/masks/059.png",
+      "sha256": "67a277bb3132960e0ee3f09b64d3028de1d04b554b5af97a40a9b70c2ddbcbc8"
+    },
+    "059.png:valid_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/valid/camera_1.png",
+      "sha256": "5c2646d62c8fe901f5688b82e56a247a55ee0f8ef47dcfe32b0c2bf3d42cfbae"
+    },
+    "079.png:image_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/images/079.png",
+      "sha256": "d49671e78043daaad0bca8df8c0836255f20ce74124a02af0c4a90d326dc611b"
+    },
+    "079.png:mask_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/masks/079.png",
+      "sha256": "5348da798cb843c449ded3ecba4a93d6b05e2db5c5a738ba2ae3346a67f23923"
+    },
+    "079.png:valid_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/valid/camera_1.png",
+      "sha256": "5c2646d62c8fe901f5688b82e56a247a55ee0f8ef47dcfe32b0c2bf3d42cfbae"
+    },
+    "100.png:image_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/images/100.png",
+      "sha256": "91d224952bd16df0d332c1ee29ce3b7f814c78745bb804c50146a60f7c119ac7"
+    },
+    "100.png:mask_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/masks/100.png",
+      "sha256": "8133ba382545ee648aed499322b1986c875645a4c90cea70ea0e7e0b9aeb6fff"
+    },
+    "100.png:valid_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/valid/camera_1.png",
+      "sha256": "5c2646d62c8fe901f5688b82e56a247a55ee0f8ef47dcfe32b0c2bf3d42cfbae"
+    },
+    "118.png:image_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/images/118.png",
+      "sha256": "5d4c4c1f4520cd6003ebedbd65e7a4315bca0c01aef0f8151a527777a631f8e9"
+    },
+    "118.png:mask_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/masks/118.png",
+      "sha256": "95dbef5a136c6fafdfd7d9ae9063f1a47b7a794bd4152e5b9943de518881c244"
+    },
+    "118.png:valid_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/valid/camera_1.png",
+      "sha256": "5c2646d62c8fe901f5688b82e56a247a55ee0f8ef47dcfe32b0c2bf3d42cfbae"
+    },
+    "137.png:image_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/images/137.png",
+      "sha256": "1a1b10e66062ab2e745c0ba5dcbc531b0e7ce223c9f0890805ddf6268106f6c8"
+    },
+    "137.png:mask_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/masks/137.png",
+      "sha256": "4e2b6bbe3529291ad43eebf79b242dd8b7cbd6e1e1d183172f4f3a971f0d65c0"
+    },
+    "137.png:valid_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/valid/camera_1.png",
+      "sha256": "5c2646d62c8fe901f5688b82e56a247a55ee0f8ef47dcfe32b0c2bf3d42cfbae"
+    },
+    "156.png:image_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/images/156.png",
+      "sha256": "b03c1efec0b68082271216519f8beddebb19c3e865b99815ab2e7f86df0e584b"
+    },
+    "156.png:mask_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/masks/156.png",
+      "sha256": "006b4323111ed42c3e8ad8b5f3af44d28c798078b2166dfc1f2ee099dfa3d8cc"
+    },
+    "156.png:valid_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/valid/camera_1.png",
+      "sha256": "5c2646d62c8fe901f5688b82e56a247a55ee0f8ef47dcfe32b0c2bf3d42cfbae"
+    },
+    "176.png:image_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/images/176.png",
+      "sha256": "675054a896b9647b849c90772520d88d71697d0a6cd77548aa63396beb23bed4"
+    },
+    "176.png:mask_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/masks/176.png",
+      "sha256": "1146853969efa05a14f879df34fdf6a646ba046508d753e029c2488eb47525d0"
+    },
+    "176.png:valid_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/valid/camera_1.png",
+      "sha256": "5c2646d62c8fe901f5688b82e56a247a55ee0f8ef47dcfe32b0c2bf3d42cfbae"
+    },
+    "200.png:image_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/images/200.png",
+      "sha256": "67c372cf9e52607b93884462dc700d6edf4108c5d90e1802a178025f6f39dddf"
+    },
+    "200.png:mask_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/masks/200.png",
+      "sha256": "51915eb74cebf727f4b9e1dc561865a8d9a113ed57be76a38faa66f73a0c96b0"
+    },
+    "200.png:valid_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/valid/camera_1.png",
+      "sha256": "5c2646d62c8fe901f5688b82e56a247a55ee0f8ef47dcfe32b0c2bf3d42cfbae"
+    },
+    "220.png:image_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/images/220.png",
+      "sha256": "8a1891f3cae61d7f1b4b38989db6262713222de8dfa08678b635d751d3de5ebb"
+    },
+    "220.png:mask_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/masks/220.png",
+      "sha256": "f9afd48a801ba8f7e37d60d08710895179750b2ba05ebf48c9f0dc2c02d6bf32"
+    },
+    "220.png:valid_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/valid/camera_1.png",
+      "sha256": "5c2646d62c8fe901f5688b82e56a247a55ee0f8ef47dcfe32b0c2bf3d42cfbae"
+    },
+    "241.png:image_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/images/241.png",
+      "sha256": "8d81515a5d551a3ffdd485418cf57a552363da3131d3f97b34731abcc575436d"
+    },
+    "241.png:mask_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/masks/241.png",
+      "sha256": "2b63094fdce1b52934eb61b9ec67f1696f670c2062d8ef5ba2cd55e8ad233d14"
+    },
+    "241.png:valid_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/valid/camera_1.png",
+      "sha256": "5c2646d62c8fe901f5688b82e56a247a55ee0f8ef47dcfe32b0c2bf3d42cfbae"
+    },
+    "259.png:image_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/images/259.png",
+      "sha256": "b08237a654dbd05d8c94424492ac92fb2f8e562c444b6799553d317115e54aad"
+    },
+    "259.png:mask_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/masks/259.png",
+      "sha256": "e6d2611096a8ec0d77710e6dd05e6a097e0625d90d66e6dedee269d2f131e0be"
+    },
+    "259.png:valid_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/valid/camera_1.png",
+      "sha256": "5c2646d62c8fe901f5688b82e56a247a55ee0f8ef47dcfe32b0c2bf3d42cfbae"
+    },
+    "278.png:image_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/images/278.png",
+      "sha256": "a1b22a51ed3d315a41e994ff683ae8b6d1393d2105bff90e70fbc4171bd86b73"
+    },
+    "278.png:mask_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/masks/278.png",
+      "sha256": "b8a0105c67660b5098616d476f246ac6f9e1d89e56b6d11b0197e55ec1b7f50f"
+    },
+    "278.png:valid_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/valid/camera_1.png",
+      "sha256": "5c2646d62c8fe901f5688b82e56a247a55ee0f8ef47dcfe32b0c2bf3d42cfbae"
+    },
+    "300.png:image_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/images/300.png",
+      "sha256": "405d4f08336fd602f12215e0b48a114510cd800a2f225a817a0ab82be73007bb"
+    },
+    "300.png:mask_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/masks/300.png",
+      "sha256": "215aea6865f4beed365bcb10de91a4dc2b0c1cfb88768249e985ff997ba22146"
+    },
+    "300.png:valid_path": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared_corner_v2/valid/camera_1.png",
+      "sha256": "5c2646d62c8fe901f5688b82e56a247a55ee0f8ef47dcfe32b0c2bf3d42cfbae"
+    }
+  },
+  "specification": {
+    "methods": [
+      "raw_render",
+      "paired_025",
+      "paired_050",
+      "real_rgb",
+      "roll_plus_025",
+      "roll_plus_050",
+      "roll_minus_025",
+      "roll_minus_050",
+      "next_camera_050",
+      "affine_rgb"
+    ],
+    "pixel_profile": "colmap_corner_v2",
+    "probability_log_epsilon": 1e-07,
+    "refiner_config": {
+      "type": "multiscale",
+      "channels": 64,
+      "residual_bound": 6.0,
+      "context": "pyramid_strip"
+    },
+    "sample_rule": "259 labeled TRAIN names sorted, floor(i*258/15), i=0..15",
+    "clipping": {
+      "raw_render": "unchanged raw float, never clamp or quantize",
+      "paired_025_050": "(1-t)*raw_R+t*real_I, no clipping",
+      "real_rgb": "prepared TRAIN uint8 decoded RGB /255, no other transform",
+      "roll_next_affine": "clip candidate to [0,1]; preserve and report preclip statistics"
+    },
+    "roll": "plus/minus floor(H/3),floor(W/3); same shift for all three channels",
+    "next_camera": "cyclic next of fixed16; per-channel RMS scaled to target residual; zero source RMS gives zero",
+    "affine": "per-channel least-squares gain/bias on fixed grid [::16,::16], no GT; constant input falls back to mean offset",
+    "local_statistics": "32x32 non-overlapping blocks including incomplete edge blocks",
+    "roll_seam_region": "union of 5-pixel-wide bands centered at +/-roll wrap rows and columns, clipped to image bounds",
+    "primary": "per-view equal-present-GT-class mean margin/NLL, then equal-camera mean",
+    "primary_contrasts": [
+      "paired_050-minus-roll_plus_050",
+      "paired_050-minus-roll_minus_050",
+      "paired_050-minus-next_camera_050",
+      "paired_050-minus-affine_rgb"
+    ],
+    "bootstrap": {
+      "unit": "camera",
+      "repeats": 5000,
+      "seed": 20260926,
+      "interval": "percentile95"
+    },
+    "max_cameras": 16,
+    "max_wall_seconds": 300,
+    "torch_threads": 8,
+    "deadline_enforcement": "cooperative checks before render/head and after each scored view; an individual operation is not preempted",
+    "budget": "16 evidence renders +16 native verification renders; 160 intervention heads +16 native heads",
+    "scoring": "Decode GT/valid only after all ten predictions for that camera; earlier byte hashes are provenance only",
+    "scope": "TRAIN real RGB is a diagnostic intervention, not camera-only performance; no teacher/optimization/cache export"
+  },
+  "runner_sha256": "aa6c65b1242289addfd32c310fdafbd077d8cae04617561fcca2950a2fafb48e",
+  "plan_maker_sha256": "8beb6d07abf256379793c4d7b2f693458cad154f5baa87deb7bfe561b5d4367a",
+  "checkpoint_bytes_read_at_draft": false,
+  "execution_authorization": "Root must review the completed-input locked plan before GPU execution"
+}

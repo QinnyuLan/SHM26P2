@@ -1,0 +1,26 @@
+protocol:
+  steps: 6000
+  seed: 20260805
+  batch_size: 1
+  odd_input: uniform native crop768
+  even_input: legacy full context1025x768
+  horizontal_flip_probability: 0.5
+  poly_power: 0.9
+  optimizer: AdamW lr1e-4 backbone0.1x decay0.05 norm_embedding_position0 beta0.9_0.999
+    eps1e-8
+  gradient_clip: 0.01
+  autocast_dtype: bfloat16
+  loss_scaling: false
+  valid_support: valid_gt_pixel_centers_v1
+  swin_checkpoint_stages: 4
+  checkpoint_every: 1000
+  loss_log_every: 100
+  hard_budget_seconds: 2400
+  validation_during_training: false
+  pixel_protocol: legacy_mixed_v1
+base_checkpoint: /home/sky/workspace/SHM2026/runs/h3_moments/02_cross/last.pt
+manifest: /home/sky/workspace/SHM2026/artifacts/prepared/manifest.json
+model_dir: /mnt/data/SHM2026/models/mask2former-swin-large-ade-semantic-aa25c924
+cache_receipt: /mnt/data/SHM2026/runs/mask2former_reference_v1/train_render/cache_receipt.json
+output: /mnt/data/SHM2026/runs/mask2former_reference_v1/training
+selected_reference_receipt: /mnt/data/SHM2026/runs/official_selected_ensemble_v1/cross_teacher/execution_receipt.json

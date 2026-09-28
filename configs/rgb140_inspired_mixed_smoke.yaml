@@ -1,0 +1,45 @@
+# CPU-prepared CUDA smoke only; 610-step compressed LR/resolution schedule, not a 30k prefix.
+seed: 42
+manifest: artifacts/prepared_corner_v2/manifest.json
+pixel_protocol: colmap_corner_v2
+output: /mnt/data/SHM2026/runs/rgb140_inspired_mixed_smoke
+steps: 610
+background_points: 2000
+train_scale: 1.0
+progressive_resolution: true
+view_sampling: shuffle
+independent_view_rng: false
+semantic_start: 1000000
+refine_start: 1000000
+semantic_weight: 0.0
+semantic_geometry_weight: 0.0
+semantic_initialization: false
+pseudo_dir: null
+multiview_fusion: false
+region_rgb_weight: 0.0
+sh_interval: 1000
+optimize_cameras: false
+camera_stop: 0
+camera_attribution: false
+camera_quality_weighting: false
+structure_guided: false
+recycle_count: 0
+densification: rgb140_mixed
+max_gaussians: 500000
+opacity_lr: 0.025
+mixed_gradient:
+  signed_clone_threshold: 0.0002
+  absolute_split_threshold: 0.0004
+  small_scale_fraction: 0.01
+  prune_scale_fraction: 0.1
+  prune_opacity: 0.005
+  max_gaussians: 500000
+  refine_start: 500
+  refine_stop: 15000
+  refine_every: 100
+  reset_every: 3000
+  reset_opacity: 0.01
+log_every: 10
+save_every: 0
+eval_every: 0
+eval_scale: 1.0

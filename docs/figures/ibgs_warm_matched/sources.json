@@ -1,0 +1,62 @@
+[
+  {
+    "label": "Current E",
+    "path": "/mnt/data/SHM2026/runs/rgb_fixed_ensemble_v1/rgb_metrics.json",
+    "sha256": "40d022bc522315eaa864fa114261f6e66c5ca6991b3de74bf309a3a4e2ad2ef9",
+    "metrics": {
+      "psnr": 30.035661247244843,
+      "ssim": 0.8744207358360291,
+      "lpips": 0.2647418451309204
+    }
+  },
+  {
+    "label": "Original AA 1M",
+    "path": "/mnt/data/SHM2026/runs/rgb_capacity_1m_reference_v1/evaluation_official/official_metrics.json",
+    "sha256": "0b4b90fca81ad4f220794b9656ce308cca4dc68a8efe83769efbfde2cd51100e",
+    "metrics": {
+      "psnr": 29.496148358719118,
+      "ssim": 0.8729830837249756,
+      "lpips": 0.2638199120759964
+    }
+  },
+  {
+    "label": "No source / raw",
+    "path": "/mnt/data/SHM2026/runs/ibgs_warm_evaluation_v1/metrics_no_source_raw.json",
+    "sha256": "edf927b1c12454b090589442de09cdbb3c5fdfd8ca3942754afdbd232e5054d1",
+    "metrics": {
+      "psnr": 29.335563518473393,
+      "ssim": 0.8681939399242401,
+      "lpips": 0.26756026774644853
+    }
+  },
+  {
+    "label": "No source / fused",
+    "path": "/mnt/data/SHM2026/runs/ibgs_warm_evaluation_v1/metrics_no_source_fused.json",
+    "sha256": "26f86f29012408a1885ce01ba638965b92bf5cc7cdc4e1ae32489d002a0686a2",
+    "metrics": {
+      "psnr": 29.33588419110264,
+      "ssim": 0.8681957376003265,
+      "lpips": 0.26754482090473175
+    }
+  },
+  {
+    "label": "Full / raw",
+    "path": "/mnt/data/SHM2026/runs/ibgs_warm_evaluation_v1/metrics_full_raw.json",
+    "sha256": "9740c52719506c3bb2470a84daefdbe06463b5d03748167ab6dbe35d7cf1920b",
+    "metrics": {
+      "psnr": 29.304543284036416,
+      "ssim": 0.8679995691776276,
+      "lpips": 0.26737435430288314
+    }
+  },
+  {
+    "label": "Full / fused",
+    "path": "/mnt/data/SHM2026/runs/ibgs_warm_evaluation_v1/metrics_full_fused.json",
+    "sha256": "31e850c417a4af102f8eec8354b2f9e626f4dba14019af7d0b2d43eae308b0e4",
+    "metrics": {
+      "psnr": 29.846756821015664,
+      "ssim": 0.8720223259925842,
+      "lpips": 0.2500692132115364
+    }
+  }
+]

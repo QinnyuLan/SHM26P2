@@ -1,0 +1,12 @@
+{
+  "free_bytes": 3161415680,
+  "compact_preflight_estimated_each": 11998086,
+  "formal_checkpoint_estimated_each": 216537753,
+  "formal_evaluation_estimated_each": 78643200,
+  "additional_outputs_estimated_total": 680297290,
+  "required_remaining_reserve": 805306368,
+  "projected_remaining_bytes": 2481118390,
+  "sufficient": true,
+  "existing_files_deleted": false,
+  "preflight_save_policy": "Only audit_state.pt with refiner/Adam/RNG, not a reusable scene checkpoint; full frozen-state checks happen before compact save."
+}

@@ -1,0 +1,13 @@
+{
+  "steps": 2000,
+  "only_scientific_variable": "sparse_front_weight 0 vs .05",
+  "common_depth_weight": 0.05,
+  "warmstart": "runs/strong_semantic_coupled/last.pt",
+  "view_sampling": "all350TRAIN, independent shuffle seed42",
+  "source": "same immutable snapshot after two-step preflight",
+  "selection_status": "development engineering control, no novelty claim",
+  "config_sha256": {
+    "01_rgb_ed_front.yaml": "761882a2258fbba241a1878a120e87bab7d5bd9cc003cd51eec725e51914a59d",
+    "00_rgb_ed.yaml": "aa8ce5abeaf3da31d6f4ccd4fd4905306a2b53af52246920d03611d2300b16c0"
+  }
+}

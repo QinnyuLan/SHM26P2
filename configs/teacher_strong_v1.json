@@ -1,0 +1,27 @@
+{
+  "manifest": "artifacts/prepared/manifest.json",
+  "model_dir": "models/dinov3-vith16plus",
+  "output_dir": "runs/teacher_strong_v1",
+  "config": {
+    "steps": 6000,
+    "crop_size": 768,
+    "channels": 192,
+    "lr": 0.0001,
+    "weight_decay": 0.01,
+    "warmup_steps": 200,
+    "consistency_start": 1000,
+    "consistency_weight": 0.5,
+    "ema_decay": 0.995,
+    "eval_every": 1000,
+    "log_every": 100,
+    "seed": 20260926,
+    "device": "cuda",
+    "val_limit": 0,
+    "val_stride": 512,
+    "gradient_clip": 1.0,
+    "context_start": 3000,
+    "context_probability": 0.5,
+    "context_short_side": 768,
+    "cpu_threads": 8
+  }
+}

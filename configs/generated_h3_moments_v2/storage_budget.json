@@ -1,0 +1,18 @@
+{
+  "status": "sufficient",
+  "free_bytes_before": 3841462272,
+  "preflight_last_sizes": [
+    188293699,
+    188293699,
+    188293699
+  ],
+  "reference_evaluation": "runs/support_split_semantic_coupled/evaluation_native",
+  "reference_evaluation_bytes": 49487909,
+  "evaluation_budget_factor": 1.5,
+  "snapshot_bytes_each": 638084,
+  "logs_and_metadata_allowance_each": 20971520,
+  "three_arm_output_budget_bytes": 852405498,
+  "expected_remaining_bytes": 2989056774,
+  "required_remaining_bytes": 751619276,
+  "no_file_deletion": true
+}

@@ -1,0 +1,89 @@
+{
+  "kind": "h2_configuration_plan_not_execution_receipt",
+  "warmstart": "runs/refiner_multiscale_v1/last.pt",
+  "base_config": null,
+  "pseudo_dir": "artifacts/pseudo_strong_v1",
+  "pseudo_status": "metadata_verified_full_file_verification_deferred_to_training",
+  "inherited_refiner_field_grad": true,
+  "refiner": {
+    "type": "multiscale",
+    "channels": 64,
+    "residual_bound": 6.0,
+    "context": "pyramid_strip"
+  },
+  "preserve_existing_refiner": true,
+  "budget": {
+    "steps_per_arm": 3000,
+    "train_views": 350,
+    "labeled_views": 259,
+    "labeled_steps": 2215,
+    "unlabeled_steps": 785,
+    "min_view_visits": 8,
+    "max_view_visits": 9,
+    "view_sampler_seed": 42,
+    "fusion_refreshes_in_fusion_arms": 15,
+    "fusion_targets_used_by_loss": 14,
+    "final_refresh_used_by_training": false,
+    "acceptance_log_steps": [
+      300,
+      500,
+      700,
+      900,
+      1100,
+      1300,
+      1500,
+      1700,
+      1900,
+      2100,
+      2300,
+      2500,
+      2700,
+      2900
+    ]
+  },
+  "configs": {
+    "00_gt_continuation": "configs/generated_h2_multiscale/00_gt_continuation.yaml",
+    "01_teacher_no_fusion": "configs/generated_h2_multiscale/01_teacher_no_fusion.yaml",
+    "02_teacher_fixed_sampling": "configs/generated_h2_multiscale/02_teacher_fixed_sampling.yaml",
+    "03_teacher_projection_sampling": "configs/generated_h2_multiscale/03_teacher_projection_sampling.yaml"
+  },
+  "run_commands": {
+    "00_gt_continuation": [
+      "uv",
+      "run",
+      "python",
+      "scripts/run_experiment.py",
+      "configs/generated_h2_multiscale/00_gt_continuation.yaml"
+    ],
+    "01_teacher_no_fusion": [
+      "uv",
+      "run",
+      "python",
+      "scripts/run_experiment.py",
+      "configs/generated_h2_multiscale/01_teacher_no_fusion.yaml",
+      "--source-snapshot",
+      "runs/h2_multiscale/00_gt_continuation/source_snapshot"
+    ],
+    "02_teacher_fixed_sampling": [
+      "uv",
+      "run",
+      "python",
+      "scripts/run_experiment.py",
+      "configs/generated_h2_multiscale/02_teacher_fixed_sampling.yaml",
+      "--source-snapshot",
+      "runs/h2_multiscale/00_gt_continuation/source_snapshot"
+    ],
+    "03_teacher_projection_sampling": [
+      "uv",
+      "run",
+      "python",
+      "scripts/run_experiment.py",
+      "configs/generated_h2_multiscale/03_teacher_projection_sampling.yaml",
+      "--source-snapshot",
+      "runs/h2_multiscale/00_gt_continuation/source_snapshot"
+    ]
+  },
+  "provenance_owner": "scripts/run_experiment.py and verified teacher export provenance",
+  "threshold_policy": "Lock thresholds using training-only diagnostics before scoring arms",
+  "training_started": false
+}

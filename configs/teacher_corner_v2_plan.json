@@ -1,0 +1,153 @@
+{
+  "status": "prepared_not_started",
+  "execution_gate": "Wait for corrected v2 RGB30k plus semantic8k and common official-grid results, then an explicit root decision. This preparation does not authorize training.",
+  "created_utc": "2026-09-26T19:19:17.873146+00:00",
+  "config": "configs/teacher_corner_v2.json",
+  "config_sha256": "5ebd8bfc70bde7ed9a870351615f8f21c5758aa105b9ba37326730de27da3644",
+  "reference_config": "configs/teacher_strong_v1.json",
+  "reference_config_sha256": "bc60133d9cfd2c9eb01cb22a3eb5a2a701df063911f2afd66394d06673280ead",
+  "only_top_level_changes": [
+    "manifest",
+    "output_dir"
+  ],
+  "training_config_exact_to_teacher_strong_v1": true,
+  "effective_config": {
+    "steps": 6000,
+    "crop_size": 768,
+    "channels": 192,
+    "lr": 0.0001,
+    "weight_decay": 0.01,
+    "warmup_steps": 200,
+    "consistency_start": 1000,
+    "consistency_weight": 0.5,
+    "ema_decay": 0.995,
+    "eval_every": 1000,
+    "log_every": 100,
+    "seed": 20260926,
+    "device": "cuda",
+    "val_limit": 0,
+    "val_stride": 512,
+    "gradient_clip": 1.0,
+    "context_start": 3000,
+    "context_probability": 0.5,
+    "context_short_side": 768,
+    "cpu_threads": 8,
+    "adapter_rank": 0,
+    "adapter_blocks": 4,
+    "adapter_alpha": 16.0,
+    "adapter_lr": 1e-05,
+    "warmstart_checkpoint": "",
+    "render_mix_probability": 0.0,
+    "eval_flip": false,
+    "eval_context_weight": 0.0,
+    "eval_context_short_side": 768,
+    "eval_all_validation_views": false
+  },
+  "old_checkpoint_overlapping_effective_config_exact": true,
+  "pixel_protocol": {
+    "intrinsics_and_projected_uv": "corner_origin; first_center=(0.5,0.5)",
+    "array_coordinates": "integer_element_centers; first_center=(0,0)",
+    "id": "colmap_corner_v2",
+    "version": 2,
+    "prepare_warp": "corner_conjugate",
+    "categorical_resize": "center_nearest_half_up_v1",
+    "appearance_prior_nearest": "floor_corner_uv",
+    "sparse_sampling": "corner_bilinear",
+    "official_export": "corner_conjugate",
+    "front_sampling": "corner_bilinear"
+  },
+  "manifest_sha256": "91b41aeecedc352e4882eb80a1bb635d479ae432251a4c96c85a9dc110cbb327",
+  "model_dir": "models/dinov3-vith16plus",
+  "backbone_policy": "Reuse existing ModelScope H+/16 frozen weights, no download and no LoRA. Newly initialize the decoder. No resume or old-head warmstart across profiles.",
+  "pseudo_export": false,
+  "pseudo_export_policy": "Do not create another 350-probability cache; existing pseudo_strong_v1 remains legacy and must not be consumed under v2.",
+  "source_when_planned": {
+    "teacher.py": "32be0ce8f0d104531719f5f458ef6dc7230a9e82824a731e4c183bbff2604ae3",
+    "coordinates.py": "f6edb965c305ba030f64bb3f53ac438077c691cdc509f850d75a8f9425c386b5",
+    "uv.lock": "01cf5bf2fcbb0704989730d7fad794b519094534b6c50e89007c11fe7d630177"
+  },
+  "historical_runtime": {
+    "teacher_strong_v1_seconds": 1838.8787444159389,
+    "caveat": "Includes historical evaluation and concurrent GPU workloads; not a guaranteed new-run duration or isolated benchmark."
+  },
+  "storage": {
+    "measured_teacher_checkpoints_bytes": {
+      "runs/teacher_strong_v1/best.pt": 102144977,
+      "runs/teacher_strong_v1/last.pt": 102144977,
+      "runs/teacher_head_continuation_control/best.pt": 102146129,
+      "runs/teacher_head_continuation_control/last.pt": 102146129,
+      "runs/teacher_render_adapt_v1/best.pt": 102148433,
+      "runs/teacher_render_adapt_v1/last.pt": 102148433
+    },
+    "legacy_tensor_component_bytes": {
+      "decoder": 25505304,
+      "ema_decoder": 25505304,
+      "optimizer": 51010880
+    },
+    "observed_max_single_checkpoint_bytes": 102148433,
+    "steady_best_plus_last_observed_bytes": 204296866,
+    "atomic_two_retained_plus_one_temporary_observed_bytes": 306445299,
+    "single_checkpoint_reserved_with_10pct_margin_bytes": 112363277,
+    "teacher_logs_metadata_allowance_bytes": 16777216,
+    "teacher_atomic_reserved_total_bytes": 353867047,
+    "current_free_bytes": 1814052864,
+    "already_allocated_v2_run_file_bytes": 122842374,
+    "capacity_for_projected_v2_slots_bytes": 1936895238,
+    "v2_budget_source": "runs/corner_v2_preparation/budget.json",
+    "v2_budget_source_sha256": "51fde69918c96adc2eaee3fc2d238bda9e6625afc891277cf52b5e77e7a219cf",
+    "assumptions": {
+      "rgb_final_checkpoint_bytes": 468713472,
+      "semantic_final_checkpoint_bytes": 252706816,
+      "native_evaluation_bytes_each": 78643200,
+      "v2_source_logs_bytes": 5242880,
+      "remaining_reserve_bytes": 268435456,
+      "provisional_extra_official_eval_allowance_bytes": 235929600
+    },
+    "scenarios": {
+      "rgb_atomic_only": {
+        "estimated_occupied_bytes": 942669824,
+        "estimated_remaining_bytes": 994225414,
+        "required_reserve_bytes": 268435456,
+        "margin_beyond_reserve_bytes": 725789958,
+        "fits_256_mib_reserve": true
+      },
+      "semantic_atomic_after_rgb": {
+        "estimated_occupied_bytes": 1058013184,
+        "estimated_remaining_bytes": 878882054,
+        "required_reserve_bytes": 268435456,
+        "margin_beyond_reserve_bytes": 610446598,
+        "fits_256_mib_reserve": true
+      },
+      "v2_completed_retained": {
+        "estimated_occupied_bytes": 883949568,
+        "estimated_remaining_bytes": 1052945670,
+        "required_reserve_bytes": 268435456,
+        "margin_beyond_reserve_bytes": 784510214,
+        "fits_256_mib_reserve": true
+      },
+      "teacher_atomic_after_both_v2_stages": {
+        "estimated_occupied_bytes": 1237816615,
+        "estimated_remaining_bytes": 699078623,
+        "required_reserve_bytes": 268435456,
+        "margin_beyond_reserve_bytes": 430643167,
+        "fits_256_mib_reserve": true
+      },
+      "teacher_after_v2_plus_provisional_official_evaluations": {
+        "estimated_occupied_bytes": 1473746215,
+        "estimated_remaining_bytes": 463149023,
+        "required_reserve_bytes": 268435456,
+        "margin_beyond_reserve_bytes": 194713567,
+        "fits_256_mib_reserve": true
+      },
+      "conservative_existing_v2_reserved_peak_plus_teacher": {
+        "estimated_occupied_bytes": 1706530087,
+        "estimated_remaining_bytes": 230365151,
+        "required_reserve_bytes": 268435456,
+        "margin_beyond_reserve_bytes": -38070305,
+        "fits_256_mib_reserve": false
+      }
+    },
+    "no_deletion": true,
+    "recheck_required": "Observation while v2 RGB training is active. Recheck actual checkpoint sizes, all existing outputs, free bytes and any extra official-grid artifacts before authorization; no disk reservation has been acquired."
+  }
+}

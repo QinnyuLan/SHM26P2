@@ -1,0 +1,49 @@
+# Python and local tooling
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+.coverage
+htmlcov/
+.mypy_cache/
+
+# Competition data and derived data (never commit these)
+Dataset/
+project_progress_20260918/
+artifacts/
+runs/
+outputs/
+SHM_2026.pdf
+
+# Model weights and binary build products. Public release metadata lives in
+# models/README.md and checkpoints/README.md.
+models/*
+!models/README.md
+checkpoints/*
+!checkpoints/README.md
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+*.so
+*.o
+build/
+dist/
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Local secrets and environment files
+.env
+.env.*
+!.env.example
+
+# The selected DINOv3 teacher is an intentional repository release asset.
+!models/dinov3-vith16plus/
+!models/dinov3-vith16plus/**

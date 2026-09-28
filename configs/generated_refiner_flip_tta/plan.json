@@ -1,0 +1,1336 @@
+{
+  "protocol": "fixed_refiner_horizontal_tta_v1",
+  "created_utc": "2026-09-26T18:59:08.958385+00:00",
+  "manifest": "/home/sky/workspace/SHM2026/artifacts/prepared/manifest.json",
+  "output": "/home/sky/workspace/SHM2026/runs/refiner_flip_tta",
+  "input_hashes": {
+    "manifest": {
+      "path": "/home/sky/workspace/SHM2026/artifacts/prepared/manifest.json",
+      "sha256": "551546979a583d46e840bd485559721f361bc28fa4dca60826374ceb74b315fa"
+    },
+    "uv_lock": {
+      "path": "/home/sky/workspace/SHM2026/uv.lock",
+      "sha256": "01cf5bf2fcbb0704989730d7fad794b519094534b6c50e89007c11fe7d630177"
+    },
+    "paired_comparison_script": {
+      "path": "/home/sky/workspace/SHM2026/scripts/compare_evaluations.py",
+      "sha256": "bbb2482fad1203c642216bdad799ae790895bf4582df6105ef6fb25263a5c90c"
+    },
+    "base_checkpoint": {
+      "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/last.pt",
+      "sha256": "a329fc70d582972fc338715765304b99da208c821ee34288809db500d5acd6b9"
+    },
+    "base_evaluation": {
+      "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/metrics.json",
+      "sha256": "b68fab706a7fbf9652606c81c4b12c4920081d745e743e582db113d3e077db25"
+    },
+    "base_experiment_receipt": {
+      "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/experiment_receipt.json",
+      "sha256": "389706e41f93fda53655b412abccd3588223b123787ed2f6a22a1d037f2900ae"
+    },
+    "00_control_checkpoint": {
+      "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/last.pt",
+      "sha256": "a2f1f38811c8d7046cc39849a126e2400dfbfec56221f00488d5b2e397f152eb"
+    },
+    "00_control_evaluation": {
+      "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/metrics.json",
+      "sha256": "5ca52218f2980baedf6d2942aed6388a5f2d0a41ea4cb56f9a980a51579ee635"
+    },
+    "00_control_experiment_receipt": {
+      "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/experiment_receipt.json",
+      "sha256": "cfcd949cc3bf0b9d15c395078abe122faa11a2eb7dd5cd97d14bf11d8e64d0d2"
+    },
+    "01_flip_checkpoint": {
+      "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/last.pt",
+      "sha256": "bbc98b94c5f41e639dde2e417ecb0be2d9f60e9511ede8270d5f09e570c66b1f"
+    },
+    "01_flip_evaluation": {
+      "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/metrics.json",
+      "sha256": "daab692cb668750f870b46bae94279e888175c4bdbb2015cd8f5e8a4191e86bc"
+    },
+    "01_flip_experiment_receipt": {
+      "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/experiment_receipt.json",
+      "sha256": "b90594cb16e07d2d2cf26caf14de4cadd777f5636ea93912f37e987f0133c6a2"
+    }
+  },
+  "arms": {
+    "base": {
+      "checkpoint": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/last.pt",
+      "evaluation": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/metrics.json",
+      "experiment_receipt": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/experiment_receipt.json",
+      "reference_images": {
+        "001_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/001_rgb.png",
+          "sha256": "81ab9332575b964b898f44d99246aade254ee9d083f066f2e19ec9903b508a53"
+        },
+        "001_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/001_mask.png",
+          "sha256": "f416f68ea541a7fda6a31702f494b3612c2407fd60cff04800db277f8221e0bc"
+        },
+        "009_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/009_rgb.png",
+          "sha256": "09da0013edec3cf2367ed9a1e40dfbb5e3c96d71962852113ebe3502f22f76c1"
+        },
+        "009_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/009_mask.png",
+          "sha256": "def31414d28c997c050825efc89e8696d826d11dd536b5607bd471ee6dcfb3aa"
+        },
+        "018_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/018_rgb.png",
+          "sha256": "525fb68dd254d89db276d05e24bb1fba06bf5b475c658be98aa21968c9cef5db"
+        },
+        "018_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/018_mask.png",
+          "sha256": "734bdba97fbb63d19290836ddb9813a56a5b245f76b3344543bbfb26f2ae0f9a"
+        },
+        "024_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/024_rgb.png",
+          "sha256": "3aa614e20c3e4ee0fa09918b33aa75fca641800e9d098fd412f5701ad9f2d6d1"
+        },
+        "024_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/024_mask.png",
+          "sha256": "2183fddffc86831e6bf5a6c15a25676b928f61c97ed78734302e5b13af3c71e1"
+        },
+        "034_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/034_rgb.png",
+          "sha256": "410f0f7cc3321d17641f57ea5bf14d3cbdf51e9de782cb395cf8018734780604"
+        },
+        "034_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/034_mask.png",
+          "sha256": "ccbcfeb210d3c2b00b667dec028a044a36bcbddc4f74325cd3412b8b47c8a7a9"
+        },
+        "040_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/040_rgb.png",
+          "sha256": "684dfb588a8e9cc64a76665a3c849cd5df2a0e11bfddde71057b02b7fb6883d0"
+        },
+        "040_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/040_mask.png",
+          "sha256": "16f54ddd8a2d046e1421440d51cd09c506e75b1bd1610bca6c423ec10ef8890c"
+        },
+        "045_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/045_rgb.png",
+          "sha256": "561e67a9ac3d2316d980539779d788f67196fb3499658184f0412814437a7f8f"
+        },
+        "045_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/045_mask.png",
+          "sha256": "04f7cb2e70ef88c1a7ecbcb63cbfa1cdba62173f371709471eea1cc0c3d93590"
+        },
+        "061_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/061_rgb.png",
+          "sha256": "725f239fe2a8eb4f588f80005aa656c3a4a165ef4e775b8e88b345e9541047a7"
+        },
+        "061_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/061_mask.png",
+          "sha256": "100c1ca78ee7b8145fa469221b52f7ceb46bc9eaf392045cf7593b1351524175"
+        },
+        "070_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/070_rgb.png",
+          "sha256": "eb0fe84fbfcc94d8595f61fc9ccee69f1624df8dc81c9312f3556d680023f61e"
+        },
+        "070_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/070_mask.png",
+          "sha256": "520cb5120e44e117e4669ce092b6b4b158e91fc8b6245aa3bb665890180d91be"
+        },
+        "077_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/077_rgb.png",
+          "sha256": "2e3744839ed50dd5aba264c81d6b42540be255c5047790e146446932457a8553"
+        },
+        "077_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/077_mask.png",
+          "sha256": "f50326db7ee3d0f308ceb69b772be3e822c4238aa787c830c43cb121adc304ca"
+        },
+        "086_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/086_rgb.png",
+          "sha256": "22615fee2f7295c0c5966a4fa49d3268e62511bd6a8f4568e09ea9b9d292d0f1"
+        },
+        "086_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/086_mask.png",
+          "sha256": "ab1685c4a5b813626e1a309518b20957cd4e378d1592957f8d10df0645a8227c"
+        },
+        "087_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/087_rgb.png",
+          "sha256": "4af8e5f2a5de1ec8a6546a791a488d304515713c85e85ab9db07c9d0a860cfe2"
+        },
+        "087_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/087_mask.png",
+          "sha256": "c234e0caca873dd10149fddde75ddbfdfa8b2de6a7467621d6d1232b6f602058"
+        },
+        "088_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/088_rgb.png",
+          "sha256": "deda9a4e405fc9cef252122d5add3c567ea028e6566715b8474a0a4ef63d2134"
+        },
+        "088_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/088_mask.png",
+          "sha256": "283ac78cd938a77a65f008d1541fb5dfb3bc9c39b9b72f0f05d9dde6b72998db"
+        },
+        "110_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/110_rgb.png",
+          "sha256": "8899e3b3ccc667d0b47527cc6919f80e33a3de50a5beba94337edffb3afc14fe"
+        },
+        "110_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/110_mask.png",
+          "sha256": "64822cf40bed331abab3a6ae21f4e0d3dcf3db9c797e1d0ef7cbe8989da07334"
+        },
+        "127_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/127_rgb.png",
+          "sha256": "0a2f447bcdbb524a0300dfa4e54c5aab9e994e036bd5200ff035df280b600151"
+        },
+        "127_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/127_mask.png",
+          "sha256": "4a4425b361ebfa76825e50849947b62f7a68bb70d57cc03b7fe82671b39ca010"
+        },
+        "135_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/135_rgb.png",
+          "sha256": "4cd8eac081cae08f296d3a361f342e79e52c4557c3525f56f7456d130bcb8cad"
+        },
+        "135_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/135_mask.png",
+          "sha256": "c3b1b8168ec0c68fc7a517f6636b72b084d53ab6813f297580041f23166231d6"
+        },
+        "138_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/138_rgb.png",
+          "sha256": "d4e5a2ad8f3c4f732ce61856e2297851044b440df828e58bebe73ba13fcece3f"
+        },
+        "138_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/138_mask.png",
+          "sha256": "269d7ef376135e7f7b667c0c42a26bf7702b20eeb9409035c47c5eff6373fc2e"
+        },
+        "142_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/142_rgb.png",
+          "sha256": "3d022c2bf41f052c5966de1d6eeed8d51e8d08011260396c4dddfeed9ebb3c83"
+        },
+        "142_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/142_mask.png",
+          "sha256": "95ac06323d4f3da76ab74e8142160bc880084aadcd3ee2acdd589185f209f867"
+        },
+        "163_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/163_rgb.png",
+          "sha256": "8e88b09bd46302b28bcf07ab21fb2d3ccfad35a53fa0f19e58c92f75e730558f"
+        },
+        "163_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/163_mask.png",
+          "sha256": "5c925efaf1d55504f083202e06678eab1acb8407bc05fd4e9e59a25207e060bb"
+        },
+        "171_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/171_rgb.png",
+          "sha256": "0c5b57ddb8317b4843bdd12a783ce8f20443e1d230676e65f910eead291b1e8b"
+        },
+        "171_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/171_mask.png",
+          "sha256": "14ff809406ad777ca686ae4335d0f301a46e411726cbdad7a756f500f2f8c8f5"
+        },
+        "175_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/175_rgb.png",
+          "sha256": "91be9a58b7ce7b1df0bbf778d5f7f97d2c5331c03026b005c33e020f27af0aaf"
+        },
+        "175_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/175_mask.png",
+          "sha256": "c6c910c192ac2b6b4bb172bc0c6eea0156f397cfa731a2a616fa60457bdba55b"
+        },
+        "177_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/177_rgb.png",
+          "sha256": "8bbd19e937b165b1e13f4093d957f81b0e73f37bc3d35c07453e9986240a6276"
+        },
+        "177_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/177_mask.png",
+          "sha256": "43a7c38aef6f6a3f30e3730c6f1ee215386647225df66c3945f7ea0efbe605dc"
+        },
+        "183_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/183_rgb.png",
+          "sha256": "2a5a14429a0f339d40e3fd94391c8cd90ae70e44e8cf06a6c7a8ec588e5e0983"
+        },
+        "183_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/183_mask.png",
+          "sha256": "eb1b9273f91047251ba08b0b831e699ddb969fdbf74a74e828ac18eaea24ec57"
+        },
+        "184_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/184_rgb.png",
+          "sha256": "e9d123c33ff93efed3653f8b6feb3c56c0ad7af29d14f79c1bc6a6c7099d5189"
+        },
+        "184_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/184_mask.png",
+          "sha256": "a9649b9d673548535cd38ef5d8c86af90bc4dc409c416aa91e64cf9bfb651807"
+        },
+        "187_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/187_rgb.png",
+          "sha256": "8e8fad596bafef649aa4ae02436dd7d3bd788b6c84626eff2938be56c3f59dd9"
+        },
+        "187_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/187_mask.png",
+          "sha256": "073134fa52d82814f923e917e95a4610243c1d6b638bca06e0d375b7e02ab668"
+        },
+        "194_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/194_rgb.png",
+          "sha256": "9fbfd1afea34f147490afccaa31e72f3c567de30e208710f7d9f386479b8f30d"
+        },
+        "194_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/194_mask.png",
+          "sha256": "2b5a13391651a4945a205742bed053cd6ba7d17daaa0512c1cc3c0f571f6fcab"
+        },
+        "198_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/198_rgb.png",
+          "sha256": "4a4ea46debbba2223870c889f11f9b6593d6e9b389d036fc5aa3c75c004e8799"
+        },
+        "198_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/198_mask.png",
+          "sha256": "ade197fb672ebb9cac3bf355fe2a25d501df31b7f711188fe8a6fb305adfe119"
+        },
+        "202_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/202_rgb.png",
+          "sha256": "7c05513cf0343d4c9c17f48c4ebcfb603ff75afe42d3b4adb142c3a9e7ae1232"
+        },
+        "202_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/202_mask.png",
+          "sha256": "5ea3fc0bdf94cbf281f9e915d61061ae5aab9857220b404f9edd75bcb546c3e6"
+        },
+        "203_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/203_rgb.png",
+          "sha256": "f4a100bff65edf1c7d09aa7ad9de006a9c805eb9e7a1a058976941cccd149a05"
+        },
+        "203_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/203_mask.png",
+          "sha256": "08234c3d96db69e6393d65d7fed28ffbf280832a26f33ad50050d55253760174"
+        },
+        "211_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/211_rgb.png",
+          "sha256": "7f34c88d8c50562de79023e7626a9c91a84d7e6148c740506741330023f57fe4"
+        },
+        "211_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/211_mask.png",
+          "sha256": "73f8430dde6ec6a5d417bd8481817d7f948cc40e84e08f4a83d54e9193d6b342"
+        },
+        "221_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/221_rgb.png",
+          "sha256": "a8e2911dcf7fbf4b9668b26300ee8a7b55cacf27363b5b9db6d23d44befc4c17"
+        },
+        "221_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/221_mask.png",
+          "sha256": "99d1f792744c6459b40d4cd59dd0c3df01faa327fbcd6154a7006489d1ed6b99"
+        },
+        "228_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/228_rgb.png",
+          "sha256": "dc91a63753e65665bce46f1c85bec748550235c8565d881371f1297f4dcc1727"
+        },
+        "228_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/228_mask.png",
+          "sha256": "0312066f23bb2a18c7aee78676e40161f55c2fe02a417bdcefb9dbceb21e9c54"
+        },
+        "235_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/235_rgb.png",
+          "sha256": "8f4790bd343d77b97c064d423a4a12a74522ea1d54f4ab8bf82feb1b0993a76b"
+        },
+        "235_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/235_mask.png",
+          "sha256": "ad4557fa3fc9c9469908f518c6857667339ca705f457192227f52824599de672"
+        },
+        "239_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/239_rgb.png",
+          "sha256": "ca33db08da48483eb0afc2adf984c875c45287d162194e299c27919fd19c231f"
+        },
+        "239_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/239_mask.png",
+          "sha256": "b19e1e684cc2a60672912198fce4acc8f7c7781fa2a6893881002f39a76e302c"
+        },
+        "251_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/251_rgb.png",
+          "sha256": "eecffcf5ee0256e801daaf15aada6f41c1a9d5d6eeac8020dd1da97dc21ad0e7"
+        },
+        "251_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/251_mask.png",
+          "sha256": "72aa05eadc1e97b3717b38e4192361d9191290c3d7ebb08dcf0bef311f2fad7b"
+        },
+        "264_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/264_rgb.png",
+          "sha256": "b92a36b1b83c8783573ed59353caf732792267236161b40c8906f25f40dd3a41"
+        },
+        "264_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/264_mask.png",
+          "sha256": "6647f2c663e86413779359406d22bba1b53c84d4157c1412dff798581d4abfbc"
+        },
+        "267_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/267_rgb.png",
+          "sha256": "e33322f99b9a50a96b4be1ad0350ee128fe4d697f6a59858bd38ed4bfb4b2130"
+        },
+        "267_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/267_mask.png",
+          "sha256": "53d89850ea6029c779b9a6b015b7028b4bc531d2cb7aa00329582b1fb1776b10"
+        },
+        "280_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/280_rgb.png",
+          "sha256": "a726b3a842b7412994d217f9f490de5a21b2e3024d224a46124c2f1a4676efd1"
+        },
+        "280_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/280_mask.png",
+          "sha256": "a9d97652405c27279becf68a53ada7438514891d6d9f4d51d0af0e709324eec5"
+        },
+        "289_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/289_rgb.png",
+          "sha256": "61f3318f976c6210dcc1ce5319964cb623348c1e0b9e81cc86369d6660832476"
+        },
+        "289_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/289_mask.png",
+          "sha256": "daf022add7b3e51f5ec05ef5d72c109281218a019d4ff93e7bf35621a3e07bbb"
+        },
+        "295_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/295_rgb.png",
+          "sha256": "3fd955885a7b642cb0bcf9960cb883771dec6366c37bb5653b247e1d5d64e6af"
+        },
+        "295_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/295_mask.png",
+          "sha256": "28ab199d95eb98322cf274af780f6f7e719b5866d325ce4f2c0aeed55ed6ec35"
+        },
+        "299_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/299_rgb.png",
+          "sha256": "83c0847f2bc52d46ab3bce57d40be0c42e8ee236d9fc43d7fc5b5542b6b1c79c"
+        },
+        "299_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/299_mask.png",
+          "sha256": "4d5a2f0e23a9c059e9e014ad3eba7bdf0a17cc88d3286116d7bd5b459165085c"
+        },
+        "314_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/314_rgb.png",
+          "sha256": "8634dc0621edf0a68b7a41fa27625615725d228b975bf69adeadab7a7d57b51b"
+        },
+        "314_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/314_mask.png",
+          "sha256": "77827b7770ba817a874bcf5ddc73f4cfa706da6fa39b83e9a212cb44e0cfce1b"
+        },
+        "332_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/332_rgb.png",
+          "sha256": "8fa8b8b0aa00593b1dbb20e853b87fae5fbc1e48c41d821f9e3a577619bca6b4"
+        },
+        "332_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/332_mask.png",
+          "sha256": "5087fffa4fd11c8835dd44feff57003366d67106133b961f1ac1420ba14dda4b"
+        },
+        "336_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/336_rgb.png",
+          "sha256": "3c00bccdf9e783403d6e7c24fdb539abbf4fe24a09676de606f07b4dad129530"
+        },
+        "336_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/336_mask.png",
+          "sha256": "615386ee8c6eadb6797854ab3c78fe8e5a11c5d268bf763a83409b3a9c31dd17"
+        },
+        "359_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/359_rgb.png",
+          "sha256": "eb98a6712f35599ec78568bf82793d023ce47aec027e6a1fc3c2629804d38569"
+        },
+        "359_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/359_mask.png",
+          "sha256": "9ffde09d93f94b13d68f33fb09a20e747ce07a54889a12005582e2b66622bce8"
+        },
+        "369_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/369_rgb.png",
+          "sha256": "82ab109402b5a3ffc5f6304c438bb656855d98f05df55219e1ef9b57e60492a4"
+        },
+        "369_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/369_mask.png",
+          "sha256": "84a9a19b2ea2646937b19c92f23417438a3f12d6831dcbac9427fe756931ec7a"
+        },
+        "387_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/387_rgb.png",
+          "sha256": "f2b781a37d633180336de7a08d747399ea94a64767a0b09cf7c2c0097f4d6732"
+        },
+        "387_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/387_mask.png",
+          "sha256": "700e138cc3ff5255c849c68d267cff6cdac0057fa2884622f6c4fb55863967a3"
+        },
+        "389_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/389_rgb.png",
+          "sha256": "3315f5286c10b16beb615abbb7d42abc5331488e7425a1b4a9a2f5d905ee31f6"
+        },
+        "389_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/389_mask.png",
+          "sha256": "0eb3dda62b40ecfec327fa25143987abb4c08d720eef58ba5f6b9f5639f99185"
+        },
+        "391_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/391_rgb.png",
+          "sha256": "f346548fbc94aa5ef91ccdf0c43cf0b6b602f4c9da5665ca1d4c660361cf48b4"
+        },
+        "391_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/391_mask.png",
+          "sha256": "b4cd6a1498f7e027086c601f383c54a806ae0e0e6ccc2c8028e3df5746cedaf8"
+        },
+        "393_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/393_rgb.png",
+          "sha256": "0f9c63dff90d116edf46905ad7c511a417a3bbfdbb41c5213188d49eca3ff67e"
+        },
+        "393_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/support_split_semantic_coupled/evaluation_native/393_mask.png",
+          "sha256": "e7bea4e0287035b8307d3e311cef564744ab8d83cac07a7fb975d810f09be00f"
+        }
+      }
+    },
+    "00_control": {
+      "checkpoint": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/last.pt",
+      "evaluation": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/metrics.json",
+      "experiment_receipt": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/experiment_receipt.json",
+      "reference_images": {
+        "001_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/001_rgb.png",
+          "sha256": "81ab9332575b964b898f44d99246aade254ee9d083f066f2e19ec9903b508a53"
+        },
+        "001_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/001_mask.png",
+          "sha256": "3c2de5fc534c78ce55c065b06c7632c846aa90c888dedba360734d0244f73114"
+        },
+        "009_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/009_rgb.png",
+          "sha256": "09da0013edec3cf2367ed9a1e40dfbb5e3c96d71962852113ebe3502f22f76c1"
+        },
+        "009_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/009_mask.png",
+          "sha256": "c36eba19146b57f75563ce23130d54c6db359f22045affa958c9ba83051ac82b"
+        },
+        "018_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/018_rgb.png",
+          "sha256": "525fb68dd254d89db276d05e24bb1fba06bf5b475c658be98aa21968c9cef5db"
+        },
+        "018_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/018_mask.png",
+          "sha256": "428b6326cf35841b76aa4ed2e57285952ccfa9c0030c25245b8b9184ec746b6a"
+        },
+        "024_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/024_rgb.png",
+          "sha256": "3aa614e20c3e4ee0fa09918b33aa75fca641800e9d098fd412f5701ad9f2d6d1"
+        },
+        "024_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/024_mask.png",
+          "sha256": "3c0ba111197fe5889ff1e184ea9bf57a68e2ed1c277e1f969b7a6edb0339ffc9"
+        },
+        "034_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/034_rgb.png",
+          "sha256": "410f0f7cc3321d17641f57ea5bf14d3cbdf51e9de782cb395cf8018734780604"
+        },
+        "034_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/034_mask.png",
+          "sha256": "964bf65d8981a7ab8e6692414219321414965932c94d72bebb791d6af78b56d3"
+        },
+        "040_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/040_rgb.png",
+          "sha256": "684dfb588a8e9cc64a76665a3c849cd5df2a0e11bfddde71057b02b7fb6883d0"
+        },
+        "040_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/040_mask.png",
+          "sha256": "a6c521cf73d03680f6be87ba1bdb388146cb1aedc91a41f60c4faea0deb6dd18"
+        },
+        "045_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/045_rgb.png",
+          "sha256": "561e67a9ac3d2316d980539779d788f67196fb3499658184f0412814437a7f8f"
+        },
+        "045_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/045_mask.png",
+          "sha256": "fe89d9f98317505b05dcba4e8219cced005735ee1e2fcb064a8191fda7173cb8"
+        },
+        "061_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/061_rgb.png",
+          "sha256": "725f239fe2a8eb4f588f80005aa656c3a4a165ef4e775b8e88b345e9541047a7"
+        },
+        "061_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/061_mask.png",
+          "sha256": "3179a2115fc71ef1da1a05d176f252b6ca912168f66c0d9629b4959a72dcde9c"
+        },
+        "070_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/070_rgb.png",
+          "sha256": "eb0fe84fbfcc94d8595f61fc9ccee69f1624df8dc81c9312f3556d680023f61e"
+        },
+        "070_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/070_mask.png",
+          "sha256": "6cb81654e1eea274806bf5f3f360a70074fe3b54115d529f622438a98be01619"
+        },
+        "077_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/077_rgb.png",
+          "sha256": "2e3744839ed50dd5aba264c81d6b42540be255c5047790e146446932457a8553"
+        },
+        "077_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/077_mask.png",
+          "sha256": "43e39b6f65e77f761d2928d2c5940d730eb89c16b40469cec52b3dfe08a79448"
+        },
+        "086_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/086_rgb.png",
+          "sha256": "22615fee2f7295c0c5966a4fa49d3268e62511bd6a8f4568e09ea9b9d292d0f1"
+        },
+        "086_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/086_mask.png",
+          "sha256": "e0a6673ff52eb94702a1ab9c553aa04164098a2cc3e6b1dbb67d1cabb9b8e115"
+        },
+        "087_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/087_rgb.png",
+          "sha256": "4af8e5f2a5de1ec8a6546a791a488d304515713c85e85ab9db07c9d0a860cfe2"
+        },
+        "087_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/087_mask.png",
+          "sha256": "239dc07b26767497e4a444e361a7ae250e643df374e86d73256c92fe0b4acddb"
+        },
+        "088_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/088_rgb.png",
+          "sha256": "deda9a4e405fc9cef252122d5add3c567ea028e6566715b8474a0a4ef63d2134"
+        },
+        "088_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/088_mask.png",
+          "sha256": "4cdb73b8cbd0211bba25d1857b08fde06ac46b290ba6d0d72174416f9d6b80ed"
+        },
+        "110_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/110_rgb.png",
+          "sha256": "8899e3b3ccc667d0b47527cc6919f80e33a3de50a5beba94337edffb3afc14fe"
+        },
+        "110_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/110_mask.png",
+          "sha256": "8353a921b52ae36ccd70f64a4a79bade42cade7f87aea6d3a084bb960dbb08ce"
+        },
+        "127_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/127_rgb.png",
+          "sha256": "0a2f447bcdbb524a0300dfa4e54c5aab9e994e036bd5200ff035df280b600151"
+        },
+        "127_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/127_mask.png",
+          "sha256": "557b4ae2a4b10b330c0fb676b66fc8191e057f2f9d2ee44e166fa1fa4a66c7ca"
+        },
+        "135_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/135_rgb.png",
+          "sha256": "4cd8eac081cae08f296d3a361f342e79e52c4557c3525f56f7456d130bcb8cad"
+        },
+        "135_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/135_mask.png",
+          "sha256": "b68be6110067d88a14022bf1227b6ec40193bd63a51485fa16e3e1156072890a"
+        },
+        "138_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/138_rgb.png",
+          "sha256": "d4e5a2ad8f3c4f732ce61856e2297851044b440df828e58bebe73ba13fcece3f"
+        },
+        "138_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/138_mask.png",
+          "sha256": "c6a965cbfade689deb8c31da5e97ecfc2449d6c83a7deabd5acaa79e3cc6d0a9"
+        },
+        "142_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/142_rgb.png",
+          "sha256": "3d022c2bf41f052c5966de1d6eeed8d51e8d08011260396c4dddfeed9ebb3c83"
+        },
+        "142_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/142_mask.png",
+          "sha256": "7bfe18121baaf4c2c5dbc7f633c2f9e22f22919aa5d47e756c7c71c1cfbf0272"
+        },
+        "163_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/163_rgb.png",
+          "sha256": "8e88b09bd46302b28bcf07ab21fb2d3ccfad35a53fa0f19e58c92f75e730558f"
+        },
+        "163_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/163_mask.png",
+          "sha256": "7236f7f710addddd7306b56dab6597a157aa46f4624cc19aec87ba5ce9185f1a"
+        },
+        "171_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/171_rgb.png",
+          "sha256": "0c5b57ddb8317b4843bdd12a783ce8f20443e1d230676e65f910eead291b1e8b"
+        },
+        "171_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/171_mask.png",
+          "sha256": "715e6d5a8a5ca05cd88761d693e1172d5aa9b64f008087a5663719cc454b7c2c"
+        },
+        "175_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/175_rgb.png",
+          "sha256": "91be9a58b7ce7b1df0bbf778d5f7f97d2c5331c03026b005c33e020f27af0aaf"
+        },
+        "175_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/175_mask.png",
+          "sha256": "97245df5893b9b248b5712c6a96f44a961c2d7ba046cd2b75adb3ca9a8d201a1"
+        },
+        "177_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/177_rgb.png",
+          "sha256": "8bbd19e937b165b1e13f4093d957f81b0e73f37bc3d35c07453e9986240a6276"
+        },
+        "177_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/177_mask.png",
+          "sha256": "d6fa00faa96dea76ad389397588d55de0e0cd7f69bd6a786c1e9446a199fe9e1"
+        },
+        "183_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/183_rgb.png",
+          "sha256": "2a5a14429a0f339d40e3fd94391c8cd90ae70e44e8cf06a6c7a8ec588e5e0983"
+        },
+        "183_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/183_mask.png",
+          "sha256": "0c8b54050af9f95d50378dc326f45ef212581be088119d09ec46643cceda8b19"
+        },
+        "184_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/184_rgb.png",
+          "sha256": "e9d123c33ff93efed3653f8b6feb3c56c0ad7af29d14f79c1bc6a6c7099d5189"
+        },
+        "184_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/184_mask.png",
+          "sha256": "1b0bbf43f068460e0df06d4d86ce4d81d92a62a84647194359b7583ece1c57f5"
+        },
+        "187_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/187_rgb.png",
+          "sha256": "8e8fad596bafef649aa4ae02436dd7d3bd788b6c84626eff2938be56c3f59dd9"
+        },
+        "187_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/187_mask.png",
+          "sha256": "51e1c8b99fef5468ebdab3db33c8b1f2965560046e85a47b238b4338c29edac0"
+        },
+        "194_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/194_rgb.png",
+          "sha256": "9fbfd1afea34f147490afccaa31e72f3c567de30e208710f7d9f386479b8f30d"
+        },
+        "194_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/194_mask.png",
+          "sha256": "8f382e8fee0c2a8cb3d16171898409e52d25b8a0df72712917ffe3f20937e640"
+        },
+        "198_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/198_rgb.png",
+          "sha256": "4a4ea46debbba2223870c889f11f9b6593d6e9b389d036fc5aa3c75c004e8799"
+        },
+        "198_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/198_mask.png",
+          "sha256": "3a97a2b2991e87eaef1312914b6adb01aa93be9261a7e50a07894c4330efc20c"
+        },
+        "202_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/202_rgb.png",
+          "sha256": "7c05513cf0343d4c9c17f48c4ebcfb603ff75afe42d3b4adb142c3a9e7ae1232"
+        },
+        "202_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/202_mask.png",
+          "sha256": "c3e63241687b132f3e6cec5ca00c484888028d04b3947dbe3f87c028a19e35f9"
+        },
+        "203_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/203_rgb.png",
+          "sha256": "f4a100bff65edf1c7d09aa7ad9de006a9c805eb9e7a1a058976941cccd149a05"
+        },
+        "203_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/203_mask.png",
+          "sha256": "c70fcfdfd6251d0de71b1f1517be42bbb54c7cb082e3f413b505e2bcc1cb8a9c"
+        },
+        "211_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/211_rgb.png",
+          "sha256": "7f34c88d8c50562de79023e7626a9c91a84d7e6148c740506741330023f57fe4"
+        },
+        "211_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/211_mask.png",
+          "sha256": "b028b768e4640345b57d11c76c588614dd15053199ee49294816f1cdb3833099"
+        },
+        "221_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/221_rgb.png",
+          "sha256": "a8e2911dcf7fbf4b9668b26300ee8a7b55cacf27363b5b9db6d23d44befc4c17"
+        },
+        "221_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/221_mask.png",
+          "sha256": "d01fab2c8efacae59eb61ae4ef5642aab4dd079bc422ed376436a338a7e65c0e"
+        },
+        "228_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/228_rgb.png",
+          "sha256": "dc91a63753e65665bce46f1c85bec748550235c8565d881371f1297f4dcc1727"
+        },
+        "228_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/228_mask.png",
+          "sha256": "6694802cac364c0ebceb22a6ac662298dce6d1bfc3cf233bd013a1343232fa91"
+        },
+        "235_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/235_rgb.png",
+          "sha256": "8f4790bd343d77b97c064d423a4a12a74522ea1d54f4ab8bf82feb1b0993a76b"
+        },
+        "235_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/235_mask.png",
+          "sha256": "0f96bf8f55e7b493398c961029af487de8ca37b8df6b75b2598bd389520bab3d"
+        },
+        "239_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/239_rgb.png",
+          "sha256": "ca33db08da48483eb0afc2adf984c875c45287d162194e299c27919fd19c231f"
+        },
+        "239_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/239_mask.png",
+          "sha256": "13c1b930f09b311a30194a8b220bb3887dbd37ff80831a5f90c5c6b70c47aa00"
+        },
+        "251_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/251_rgb.png",
+          "sha256": "eecffcf5ee0256e801daaf15aada6f41c1a9d5d6eeac8020dd1da97dc21ad0e7"
+        },
+        "251_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/251_mask.png",
+          "sha256": "ecffb83224e529ff6839f555393738b6a8c602f42f3ad22d97da0df62ff14de4"
+        },
+        "264_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/264_rgb.png",
+          "sha256": "b92a36b1b83c8783573ed59353caf732792267236161b40c8906f25f40dd3a41"
+        },
+        "264_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/264_mask.png",
+          "sha256": "4a4cc7d04c121566f37a153d12eb10483b2161fd27de8169c0f3280be1594e8a"
+        },
+        "267_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/267_rgb.png",
+          "sha256": "e33322f99b9a50a96b4be1ad0350ee128fe4d697f6a59858bd38ed4bfb4b2130"
+        },
+        "267_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/267_mask.png",
+          "sha256": "e6e44aef6db7c0c8a11590335bf71f8f26291062aa24c54273666fe6de415e97"
+        },
+        "280_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/280_rgb.png",
+          "sha256": "a726b3a842b7412994d217f9f490de5a21b2e3024d224a46124c2f1a4676efd1"
+        },
+        "280_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/280_mask.png",
+          "sha256": "bd2fb4196edaa7c2b28b086615406d498486b81eabaa0bdd7b0403bd4ce3b2bc"
+        },
+        "289_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/289_rgb.png",
+          "sha256": "61f3318f976c6210dcc1ce5319964cb623348c1e0b9e81cc86369d6660832476"
+        },
+        "289_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/289_mask.png",
+          "sha256": "58ae0ae1c0d0fb9b9997b8ab95ced80c956cce17dafdbe9013c3b3cfbd130ba7"
+        },
+        "295_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/295_rgb.png",
+          "sha256": "3fd955885a7b642cb0bcf9960cb883771dec6366c37bb5653b247e1d5d64e6af"
+        },
+        "295_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/295_mask.png",
+          "sha256": "86f397e7a1a033f686e64fcd902f15778bd5fe4dcac99074e032ab8f788b39d9"
+        },
+        "299_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/299_rgb.png",
+          "sha256": "83c0847f2bc52d46ab3bce57d40be0c42e8ee236d9fc43d7fc5b5542b6b1c79c"
+        },
+        "299_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/299_mask.png",
+          "sha256": "1e8693de5e5be91d4412b53d0c72c68bc280fc23eeab4cf09e3258ce99066e08"
+        },
+        "314_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/314_rgb.png",
+          "sha256": "8634dc0621edf0a68b7a41fa27625615725d228b975bf69adeadab7a7d57b51b"
+        },
+        "314_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/314_mask.png",
+          "sha256": "358f9d7b0dec36a3bccccc0fbc68847b9e60563de3d552a260cb480e00a69ff8"
+        },
+        "332_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/332_rgb.png",
+          "sha256": "8fa8b8b0aa00593b1dbb20e853b87fae5fbc1e48c41d821f9e3a577619bca6b4"
+        },
+        "332_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/332_mask.png",
+          "sha256": "8b496590b62949ea8d39e8f2af13d144dc6420ac97d84909594029cc2c238552"
+        },
+        "336_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/336_rgb.png",
+          "sha256": "3c00bccdf9e783403d6e7c24fdb539abbf4fe24a09676de606f07b4dad129530"
+        },
+        "336_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/336_mask.png",
+          "sha256": "852d552bd6c14efd21b79781bcca5a711178ff6ab0d3bbb0a92a473a7755523c"
+        },
+        "359_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/359_rgb.png",
+          "sha256": "eb98a6712f35599ec78568bf82793d023ce47aec027e6a1fc3c2629804d38569"
+        },
+        "359_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/359_mask.png",
+          "sha256": "0e79ad01f5150ad79d6a601d91538ab8bb1a4cc14d6c65d6141dd6ab45851f59"
+        },
+        "369_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/369_rgb.png",
+          "sha256": "82ab109402b5a3ffc5f6304c438bb656855d98f05df55219e1ef9b57e60492a4"
+        },
+        "369_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/369_mask.png",
+          "sha256": "c307a1acc6110f004d6e9090a67e36ce7a6e422e5a1efc5024136a1bfda34841"
+        },
+        "387_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/387_rgb.png",
+          "sha256": "f2b781a37d633180336de7a08d747399ea94a64767a0b09cf7c2c0097f4d6732"
+        },
+        "387_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/387_mask.png",
+          "sha256": "2934c9fba507bc3bc08d7dadece308de1548d073d66a99799a720514c240024c"
+        },
+        "389_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/389_rgb.png",
+          "sha256": "3315f5286c10b16beb615abbb7d42abc5331488e7425a1b4a9a2f5d905ee31f6"
+        },
+        "389_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/389_mask.png",
+          "sha256": "341e5acc7cc730b781dbea039deb788df7190017209729955f504d7d27e547d2"
+        },
+        "391_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/391_rgb.png",
+          "sha256": "f346548fbc94aa5ef91ccdf0c43cf0b6b602f4c9da5665ca1d4c660361cf48b4"
+        },
+        "391_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/391_mask.png",
+          "sha256": "d74991d39977b2e5f1c3fe66f32a3d6cf0338e44a2ddd2bec0da0082a860de81"
+        },
+        "393_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/393_rgb.png",
+          "sha256": "0f9c63dff90d116edf46905ad7c511a417a3bbfdbb41c5213188d49eca3ff67e"
+        },
+        "393_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/00_control/evaluation_native/393_mask.png",
+          "sha256": "1dda9166a819a3a0ffe908462cc4fcdbee02e48f222842529a1f01b566dc9a25"
+        }
+      }
+    },
+    "01_flip": {
+      "checkpoint": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/last.pt",
+      "evaluation": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/metrics.json",
+      "experiment_receipt": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/experiment_receipt.json",
+      "reference_images": {
+        "001_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/001_rgb.png",
+          "sha256": "81ab9332575b964b898f44d99246aade254ee9d083f066f2e19ec9903b508a53"
+        },
+        "001_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/001_mask.png",
+          "sha256": "25ea19edf50305013f173468f6c214345da513665496f35ffb83778210a60d7f"
+        },
+        "009_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/009_rgb.png",
+          "sha256": "09da0013edec3cf2367ed9a1e40dfbb5e3c96d71962852113ebe3502f22f76c1"
+        },
+        "009_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/009_mask.png",
+          "sha256": "ab5beed6f2c155f117cc283d2589974ceec1e6cd5e962338d3e45702d7a2dbd1"
+        },
+        "018_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/018_rgb.png",
+          "sha256": "525fb68dd254d89db276d05e24bb1fba06bf5b475c658be98aa21968c9cef5db"
+        },
+        "018_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/018_mask.png",
+          "sha256": "dea51a586844b77267023054853fdd4e8b77294b541b64a538c7cc5b093ac382"
+        },
+        "024_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/024_rgb.png",
+          "sha256": "3aa614e20c3e4ee0fa09918b33aa75fca641800e9d098fd412f5701ad9f2d6d1"
+        },
+        "024_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/024_mask.png",
+          "sha256": "138a2c2172b427ea7f69e6f75a04f2aba1fd0f5ba090d88908bede72e56856e1"
+        },
+        "034_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/034_rgb.png",
+          "sha256": "410f0f7cc3321d17641f57ea5bf14d3cbdf51e9de782cb395cf8018734780604"
+        },
+        "034_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/034_mask.png",
+          "sha256": "e08a4ccdbdb43c9fa92ca3cd7862df5a1dcf2396f65f252401fef6c1c5cbccda"
+        },
+        "040_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/040_rgb.png",
+          "sha256": "684dfb588a8e9cc64a76665a3c849cd5df2a0e11bfddde71057b02b7fb6883d0"
+        },
+        "040_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/040_mask.png",
+          "sha256": "e734ec8e0013c840983fc3114cd5f1e097428f4dbfe78febbe701837baeced5e"
+        },
+        "045_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/045_rgb.png",
+          "sha256": "561e67a9ac3d2316d980539779d788f67196fb3499658184f0412814437a7f8f"
+        },
+        "045_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/045_mask.png",
+          "sha256": "9296c79c335d95e0b8098311df227ae31947bffdeca7164877da1475978c1c49"
+        },
+        "061_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/061_rgb.png",
+          "sha256": "725f239fe2a8eb4f588f80005aa656c3a4a165ef4e775b8e88b345e9541047a7"
+        },
+        "061_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/061_mask.png",
+          "sha256": "ce7c0b8e4a08389d4337fc3acf7a63749670bd084747db1feac2c0f87e215798"
+        },
+        "070_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/070_rgb.png",
+          "sha256": "eb0fe84fbfcc94d8595f61fc9ccee69f1624df8dc81c9312f3556d680023f61e"
+        },
+        "070_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/070_mask.png",
+          "sha256": "f2ef013a721b5f6da12161b2d6dfde4a721ee39a93665eabd4c887f08247fd25"
+        },
+        "077_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/077_rgb.png",
+          "sha256": "2e3744839ed50dd5aba264c81d6b42540be255c5047790e146446932457a8553"
+        },
+        "077_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/077_mask.png",
+          "sha256": "f1c312e9865717da27d13af79d60be6091c53ecfef00e5792826b2e070324282"
+        },
+        "086_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/086_rgb.png",
+          "sha256": "22615fee2f7295c0c5966a4fa49d3268e62511bd6a8f4568e09ea9b9d292d0f1"
+        },
+        "086_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/086_mask.png",
+          "sha256": "5a90b5bcbda2017f842d3a8c63492f75a926711ad8aedfc6f3b27325ea4123ac"
+        },
+        "087_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/087_rgb.png",
+          "sha256": "4af8e5f2a5de1ec8a6546a791a488d304515713c85e85ab9db07c9d0a860cfe2"
+        },
+        "087_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/087_mask.png",
+          "sha256": "23ac8bacbaffb11d42edb18bf2fcb6eb7d068288424c1f95b4f76f8546f74ae0"
+        },
+        "088_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/088_rgb.png",
+          "sha256": "deda9a4e405fc9cef252122d5add3c567ea028e6566715b8474a0a4ef63d2134"
+        },
+        "088_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/088_mask.png",
+          "sha256": "c5851d33ed58e24c683daff26b2a84cda2a4fddf7447f025adc95c2a50c661b5"
+        },
+        "110_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/110_rgb.png",
+          "sha256": "8899e3b3ccc667d0b47527cc6919f80e33a3de50a5beba94337edffb3afc14fe"
+        },
+        "110_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/110_mask.png",
+          "sha256": "57155a03b01bd0dd6924e07679ad725fcda8c8775059d5c41e5c834240b9e3c6"
+        },
+        "127_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/127_rgb.png",
+          "sha256": "0a2f447bcdbb524a0300dfa4e54c5aab9e994e036bd5200ff035df280b600151"
+        },
+        "127_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/127_mask.png",
+          "sha256": "b5d460410e3d56f4857d9185207e31dacc02c28645297fa241d118148c3cfaa8"
+        },
+        "135_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/135_rgb.png",
+          "sha256": "4cd8eac081cae08f296d3a361f342e79e52c4557c3525f56f7456d130bcb8cad"
+        },
+        "135_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/135_mask.png",
+          "sha256": "cec5714fff0ae26b742e2d3f379efbcace4a33bc58152569c4abec43ab019fd4"
+        },
+        "138_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/138_rgb.png",
+          "sha256": "d4e5a2ad8f3c4f732ce61856e2297851044b440df828e58bebe73ba13fcece3f"
+        },
+        "138_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/138_mask.png",
+          "sha256": "e2486308c692dd150a00cc06cd0b0aed4db202086d10c2db11c12c011e239dfb"
+        },
+        "142_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/142_rgb.png",
+          "sha256": "3d022c2bf41f052c5966de1d6eeed8d51e8d08011260396c4dddfeed9ebb3c83"
+        },
+        "142_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/142_mask.png",
+          "sha256": "114906ae99d93a1b65b85581d270b03c50e73bc87731df70bb1241651a620523"
+        },
+        "163_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/163_rgb.png",
+          "sha256": "8e88b09bd46302b28bcf07ab21fb2d3ccfad35a53fa0f19e58c92f75e730558f"
+        },
+        "163_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/163_mask.png",
+          "sha256": "9efbe9596e05d3a1e279a7b5725b8d858e7b31e596ca0e13e6037d87275601b0"
+        },
+        "171_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/171_rgb.png",
+          "sha256": "0c5b57ddb8317b4843bdd12a783ce8f20443e1d230676e65f910eead291b1e8b"
+        },
+        "171_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/171_mask.png",
+          "sha256": "17a0e68b786548411b2dbdabf45a0e07e590402403e8a2643331b4b39ae862ad"
+        },
+        "175_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/175_rgb.png",
+          "sha256": "91be9a58b7ce7b1df0bbf778d5f7f97d2c5331c03026b005c33e020f27af0aaf"
+        },
+        "175_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/175_mask.png",
+          "sha256": "57314d2d490d487c51958912bcbc6d58c09aa0b13d4b68c07029e96fcb3162ac"
+        },
+        "177_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/177_rgb.png",
+          "sha256": "8bbd19e937b165b1e13f4093d957f81b0e73f37bc3d35c07453e9986240a6276"
+        },
+        "177_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/177_mask.png",
+          "sha256": "5e3d05f8642a940d828352b9a680ffcdfe86e15175dc893061803b66d8361540"
+        },
+        "183_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/183_rgb.png",
+          "sha256": "2a5a14429a0f339d40e3fd94391c8cd90ae70e44e8cf06a6c7a8ec588e5e0983"
+        },
+        "183_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/183_mask.png",
+          "sha256": "0b23897775f7eca8333dde630be6ab24c2af857cfcb1f167977a9f7fcb47f722"
+        },
+        "184_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/184_rgb.png",
+          "sha256": "e9d123c33ff93efed3653f8b6feb3c56c0ad7af29d14f79c1bc6a6c7099d5189"
+        },
+        "184_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/184_mask.png",
+          "sha256": "882fd94694ece54ff9196c5c71e6413612e0ab3b7841b76e94e7d296df290a5a"
+        },
+        "187_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/187_rgb.png",
+          "sha256": "8e8fad596bafef649aa4ae02436dd7d3bd788b6c84626eff2938be56c3f59dd9"
+        },
+        "187_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/187_mask.png",
+          "sha256": "32323ffa5b4d550c30a465d91654dc9ecba57db5174a90bac471edb2ca40f681"
+        },
+        "194_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/194_rgb.png",
+          "sha256": "9fbfd1afea34f147490afccaa31e72f3c567de30e208710f7d9f386479b8f30d"
+        },
+        "194_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/194_mask.png",
+          "sha256": "7cabdc22a4458d2cf5c1fe3c32518c530cebf3dce8f6c1fe83bd1009ea398aa4"
+        },
+        "198_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/198_rgb.png",
+          "sha256": "4a4ea46debbba2223870c889f11f9b6593d6e9b389d036fc5aa3c75c004e8799"
+        },
+        "198_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/198_mask.png",
+          "sha256": "655115ee129f534167f0990b69bca556ca0c55837d0e76960ba758c7049d7d3f"
+        },
+        "202_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/202_rgb.png",
+          "sha256": "7c05513cf0343d4c9c17f48c4ebcfb603ff75afe42d3b4adb142c3a9e7ae1232"
+        },
+        "202_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/202_mask.png",
+          "sha256": "3dce3c8230253bf928867091ceaadbb2113376221c2119e2e38277091f152c89"
+        },
+        "203_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/203_rgb.png",
+          "sha256": "f4a100bff65edf1c7d09aa7ad9de006a9c805eb9e7a1a058976941cccd149a05"
+        },
+        "203_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/203_mask.png",
+          "sha256": "d6f82824aad5a5093f2115b93435684df09da3ee4e14148a778c1714899223e0"
+        },
+        "211_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/211_rgb.png",
+          "sha256": "7f34c88d8c50562de79023e7626a9c91a84d7e6148c740506741330023f57fe4"
+        },
+        "211_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/211_mask.png",
+          "sha256": "860ca06117ffde991655807957fba038be34115401c737811ba661d1b8ff3139"
+        },
+        "221_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/221_rgb.png",
+          "sha256": "a8e2911dcf7fbf4b9668b26300ee8a7b55cacf27363b5b9db6d23d44befc4c17"
+        },
+        "221_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/221_mask.png",
+          "sha256": "3a5197b855417010086f07cd138fcf8df453b442c8ccf6c310b8729b532e941d"
+        },
+        "228_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/228_rgb.png",
+          "sha256": "dc91a63753e65665bce46f1c85bec748550235c8565d881371f1297f4dcc1727"
+        },
+        "228_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/228_mask.png",
+          "sha256": "b6be7cc7e8661db77f8fa4f3f4a8349cd446167915298211f251ece3f71632a5"
+        },
+        "235_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/235_rgb.png",
+          "sha256": "8f4790bd343d77b97c064d423a4a12a74522ea1d54f4ab8bf82feb1b0993a76b"
+        },
+        "235_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/235_mask.png",
+          "sha256": "79da529930d5034a85db258ee2ec42f637c58dcbbb2cee67630727598384c73b"
+        },
+        "239_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/239_rgb.png",
+          "sha256": "ca33db08da48483eb0afc2adf984c875c45287d162194e299c27919fd19c231f"
+        },
+        "239_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/239_mask.png",
+          "sha256": "e5d89fbd6d6060492c3ed23154fd2e2679603cefb5c388d4df6a266743a611aa"
+        },
+        "251_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/251_rgb.png",
+          "sha256": "eecffcf5ee0256e801daaf15aada6f41c1a9d5d6eeac8020dd1da97dc21ad0e7"
+        },
+        "251_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/251_mask.png",
+          "sha256": "45c0fb73cad507ec6f2c5ea4c73caa268a5d6778b4da583d7c940d582f11273a"
+        },
+        "264_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/264_rgb.png",
+          "sha256": "b92a36b1b83c8783573ed59353caf732792267236161b40c8906f25f40dd3a41"
+        },
+        "264_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/264_mask.png",
+          "sha256": "3dae18b20cad2293a5b1f0f84cd15a87d0b7625a127df5ef6e16ae0090e73245"
+        },
+        "267_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/267_rgb.png",
+          "sha256": "e33322f99b9a50a96b4be1ad0350ee128fe4d697f6a59858bd38ed4bfb4b2130"
+        },
+        "267_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/267_mask.png",
+          "sha256": "92532b973df682d4422a43a2341f552860740ff3acaa2c461d3b6335f95b5d1d"
+        },
+        "280_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/280_rgb.png",
+          "sha256": "a726b3a842b7412994d217f9f490de5a21b2e3024d224a46124c2f1a4676efd1"
+        },
+        "280_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/280_mask.png",
+          "sha256": "26ce2612b47f3f16a64228771d9ba24edf522a8f416d31383dc7890413ace614"
+        },
+        "289_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/289_rgb.png",
+          "sha256": "61f3318f976c6210dcc1ce5319964cb623348c1e0b9e81cc86369d6660832476"
+        },
+        "289_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/289_mask.png",
+          "sha256": "5c43ff8f17ab752ca7c1e6437dfe83b63c6518baffbd3aa742a358f62eac5eed"
+        },
+        "295_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/295_rgb.png",
+          "sha256": "3fd955885a7b642cb0bcf9960cb883771dec6366c37bb5653b247e1d5d64e6af"
+        },
+        "295_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/295_mask.png",
+          "sha256": "07d0d9d1d030d3d513b6bedc94b6d89bbe7ed68b79d2f4a8eee496001e45703a"
+        },
+        "299_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/299_rgb.png",
+          "sha256": "83c0847f2bc52d46ab3bce57d40be0c42e8ee236d9fc43d7fc5b5542b6b1c79c"
+        },
+        "299_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/299_mask.png",
+          "sha256": "833849255df8d43be08149fe5cf2537c2619f662d9b70ffae0d388e68c2895fe"
+        },
+        "314_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/314_rgb.png",
+          "sha256": "8634dc0621edf0a68b7a41fa27625615725d228b975bf69adeadab7a7d57b51b"
+        },
+        "314_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/314_mask.png",
+          "sha256": "fd3a52022b2ea8fa8d83096a94f35ae64932fdff84e916a205cae559413776e7"
+        },
+        "332_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/332_rgb.png",
+          "sha256": "8fa8b8b0aa00593b1dbb20e853b87fae5fbc1e48c41d821f9e3a577619bca6b4"
+        },
+        "332_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/332_mask.png",
+          "sha256": "b1be7b2dc0276d2e7c1fce13249191f0c351a35bc6f0c054e33737ed55355d61"
+        },
+        "336_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/336_rgb.png",
+          "sha256": "3c00bccdf9e783403d6e7c24fdb539abbf4fe24a09676de606f07b4dad129530"
+        },
+        "336_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/336_mask.png",
+          "sha256": "6a7d7b97ffca41542e3c05ac434b0fda4ca37b97f4a9aea734a3b008d4033a5d"
+        },
+        "359_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/359_rgb.png",
+          "sha256": "eb98a6712f35599ec78568bf82793d023ce47aec027e6a1fc3c2629804d38569"
+        },
+        "359_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/359_mask.png",
+          "sha256": "227d33cdd0ad13b09f9b43e6ce7adfdf5fcaebead131157f9c73d8511af4d1af"
+        },
+        "369_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/369_rgb.png",
+          "sha256": "82ab109402b5a3ffc5f6304c438bb656855d98f05df55219e1ef9b57e60492a4"
+        },
+        "369_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/369_mask.png",
+          "sha256": "8b73a5318cacf6cf37cb751c981c523ac5cad97a7b8ccd092dbb162e83b99b10"
+        },
+        "387_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/387_rgb.png",
+          "sha256": "f2b781a37d633180336de7a08d747399ea94a64767a0b09cf7c2c0097f4d6732"
+        },
+        "387_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/387_mask.png",
+          "sha256": "96798ae1123d6e7c1d85ff9d1b7ca138bed50d17b35a5c57e8a3805985ff66e3"
+        },
+        "389_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/389_rgb.png",
+          "sha256": "3315f5286c10b16beb615abbb7d42abc5331488e7425a1b4a9a2f5d905ee31f6"
+        },
+        "389_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/389_mask.png",
+          "sha256": "97acf34478f0c6ab5a84be9ffebb76cdcfd850f482a50a915461c7db38c62b8a"
+        },
+        "391_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/391_rgb.png",
+          "sha256": "f346548fbc94aa5ef91ccdf0c43cf0b6b602f4c9da5665ca1d4c660361cf48b4"
+        },
+        "391_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/391_mask.png",
+          "sha256": "6c9e8f4828cc2c98d4960d9f8bdc96d178f0c87199d3356f824f57fb791e0ec5"
+        },
+        "393_rgb.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/393_rgb.png",
+          "sha256": "0f9c63dff90d116edf46905ad7c511a417a3bbfdbb41c5213188d49eca3ff67e"
+        },
+        "393_mask.png": {
+          "path": "/home/sky/workspace/SHM2026/runs/refiner_flip/01_flip/evaluation_native/393_mask.png",
+          "sha256": "7c4d5cca303e1ec44ede3a1d834eb9025b34458baaa38f05a9e23dbd93fc48ed"
+        }
+      }
+    }
+  },
+  "source_snapshot": "/home/sky/workspace/SHM2026/runs/refiner_flip_tta/source_snapshot",
+  "source_hashes": {
+    "bridge_rgs/__init__.py": "dbfc7c6307632a9c8ddba2ec138c1a5222a588a23bbaf913ca777467c1c3f93a",
+    "bridge_rgs/averaging.py": "3cb517cace0a0231bc2dbc1284ab6532ddaa5648c929ded5f36c42ed7279d28e",
+    "bridge_rgs/cli.py": "2c76890876252bdcc62ed7aca175203212c66a19f39462a68dd35929a4cbed97",
+    "bridge_rgs/coordinates.py": "f6edb965c305ba030f64bb3f53ac438077c691cdc509f850d75a8f9425c386b5",
+    "bridge_rgs/data.py": "a5495b2cc4400b2755d246f805f4a86424e681f1aea5ff19ebb1e3da49395356",
+    "bridge_rgs/densification.py": "0b1f4073086afce3358d0c7fb4fcc6cb1d87a18cb0981ac411c4aabadeb5cfea",
+    "bridge_rgs/depth_moments.py": "b59d81036f34d24bacf2f3085dc01a6f097958dad48b54d6e49d59d618020ed8",
+    "bridge_rgs/evaluate.py": "5c180581ad680f76a708f73abcc5850dad0ec6f4c3aa25c664bd9d0d217e2b2f",
+    "bridge_rgs/export.py": "aef22ad29a4f5274936d2ae0685264e7caab24c910554f3bfb7e11746780cee4",
+    "bridge_rgs/fusion.py": "a19c365453a0d6f2770424a816b4c2bda07c5e7cb9fd6f0d3885785cff92c79a",
+    "bridge_rgs/geometry.py": "890f67d33492e22413fe62bdb1af1543820446880a43af7f64cc11aaab870e7b",
+    "bridge_rgs/io.py": "08fafa9f20ee07cddd867db4d4c02a33e706435ec40a13a15e22db4a7600a65d",
+    "bridge_rgs/losses.py": "76eb8a8c15eea71dd0110f461098f1997620c93095915ca6d0fb771f9a74f25e",
+    "bridge_rgs/model.py": "e55882c6cf52da5db8e4b67b1357534b1985058a80c4c969a9a06f652b625ca2",
+    "bridge_rgs/prepare.py": "99e7fe905e4d4d89b34b5fe896035cfee18c5ec8fdb171f2985e03fc8d4abd41",
+    "bridge_rgs/projection_stress.py": "e47bf530525925d97d7ea0e17072ef2fbd7b0da34d3b4d63efe61d85d1461888",
+    "bridge_rgs/ray_support.py": "5399b02ed0076c057bc43589d1d81820606a21b7c70971c5bda610d3ae17fb5a",
+    "bridge_rgs/ray_termination.py": "0051f687dfaeb1aab2918303bb719c9cc75d3b82bb5f45aedc41e1f8bd6b69a5",
+    "bridge_rgs/refinement.py": "2edbb63ed8ba8ceba0bd5f4e5a8bdc94e6c5a10d2d0f049a24457d494fcfd68a",
+    "bridge_rgs/refiner_crops.py": "eee619d288e470e22262ff45ba007d3932018703f1c5b49869aab46d028cfe61",
+    "bridge_rgs/refiner_flip.py": "058dbebf50a0e4a42679b11377409dde89590dd75b9ca43048f10b28ad7653da",
+    "bridge_rgs/refiner_tta.py": "0baa6000993f7397a9bb88e14d7d4f393b9864ebceb7a278b90a9b784a98e19b",
+    "bridge_rgs/reliability.py": "02375e3b34ae47d04c9ab796994f380e42ab0046307f8e9079dfdd854945ce9f",
+    "bridge_rgs/render_ensemble.py": "2aa5f0a38a99d7059b04c0a897f2cfe9454062a13eec160fdf05b63c6897bc86",
+    "bridge_rgs/semantic_schedule.py": "0c5d9cad8f7fe0fc37d9410b2547ca260e33d3ce2fa14451784ecd3e8390cbc2",
+    "bridge_rgs/semantic_transfer.py": "5b10acd0c5face5d413a8d46e8c2743dbb10c13971a190105d106be008f7d0ca",
+    "bridge_rgs/teacher.py": "32be0ce8f0d104531719f5f458ef6dc7230a9e82824a731e4c183bbff2604ae3",
+    "bridge_rgs/teacher_adapters.py": "048a5316a5d3875df089a226192a0daf3d26dd6d6a14c37828678dd40dedbc2f",
+    "bridge_rgs/teacher_domains.py": "d6fcc29da1ee656308d5f2a9c13b064a97f111faaf68b3877fb64990f4a8e5cb",
+    "bridge_rgs/train.py": "99c27c929253b17e71753a6a2afb080d1cdc0e464ce8f2550d78d8177c3e04d0"
+  },
+  "snapshot_tree_sha256": "8f26a9af7f84865dc6eb526d97cabbc5bdce75172740d3a36c3990ca1d130dc3",
+  "runner_sha256": "938f9a6cb4b4c202af4e44c56bfe3b73bc283be7960c005553c8918176a7b4d4",
+  "inference": {
+    "scale": 1.0,
+    "lpips": true,
+    "horizontal_flip_probability_mean": 0.5,
+    "teacher": false,
+    "optimization_steps": 0
+  },
+  "expected_views": 50,
+  "expected_semantic_views": 41,
+  "native_size": [
+    1320,
+    989
+  ],
+  "expected_profile": "legacy_mixed_v1",
+  "audit": "Hook each plain scene.render before fixed TTA; save and compare all50 argmax PNGs, compare fresh/native RGB and per-view/global raw CM exactly. Preserve old legacy evaluation fingerprint.",
+  "gt_policy": "Standard evaluate_scene scorer reads RGB/GT/valid; only camera parameters reach scene.render and only rendered evidence reaches TTA. No claim that scoring files remain unopened.",
+  "paired": "Report TTA minus plain for each of all three predeclared checkpoints; no choice of weights or training.",
+  "storage": {
+    "estimated_new_bytes": 251658240,
+    "free_bytes_when_planned": 2593218560
+  },
+  "scope": "Standard horizontal inference augmentation engineering control; fixed development split, not novel or blind-test evidence."
+}

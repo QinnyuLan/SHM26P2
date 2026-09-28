@@ -1,0 +1,17 @@
+{
+  "model_id": "facebook/dinov3-vith16plus-pretrain-lvd1689m",
+  "revision": "98b7096b2938406ade58801a0bf75eca3198b5bd",
+  "provider": "ModelScope",
+  "source_url": "https://modelscope.cn/models/facebook/dinov3-vith16plus-pretrain-lvd1689m",
+  "downloaded_at": "2026-09-26T08:36:57.423926+00:00",
+  "architecture": "DINOv3ViTModel",
+  "parameters": 840592640,
+  "files_sha256": {
+    "configuration.json": "2e298ee07ca76e112e8cb5524061000871a464b0088d14becb7d0564215a9380",
+    "README.md": "c5b22ecac789a9c2de7c3115b975f9b00351f68a141d5de175fdfd5c2858b99e",
+    "LICENSE.md": "25d122eb8f5b880fd23c736fb6ea8018ee45c12237e00b8a86d14c653904999e",
+    "config.json": "35770e98e425c9383534bcbfa7f3b7a3cb1d943f6d26a37d7d19fea0735eab57",
+    "model.safetensors": "3e1d4d18b9bfa9f28fad8e9de6a783f1313532d3460efa4cd0b12521d81d1a4d",
+    "preprocessor_config.json": "960c41d1f3a7778b936365769a2d90550b318a6c0a53a0296957adacfe5e0dd7"
+  }
+}
