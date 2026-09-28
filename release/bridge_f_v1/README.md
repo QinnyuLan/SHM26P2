@@ -1,8 +1,10 @@
 # Bridge-RGS F release
 
 This directory records the reproducible model contract for the selected F
-deployment. It is metadata only: checkpoints, DINOv3 weights, datasets, and
-render caches are deliberately not committed to the public source repository.
+deployment. The corresponding dataset, DINOv3 weights, and checkpoints are
+published at [ModelScope `sky931/SHM2026`](https://modelscope.cn/datasets/sky931/SHM2026/files).
+The source repository keeps only this lightweight contract; render caches and
+historical experiment checkpoints are excluded.
 
 ## Components
 
@@ -15,9 +17,8 @@ render caches are deliberately not committed to the public source repository.
 | `ibgs_layer_heads_matched_v1/top4_normalized/last.pt` | normalized top-4 RGB head | `4b13a8aa7501b6cb42e5bdf40d8ea9334e5884f83cc13ff12ff59f7c3fa46346` |
 
 The exact local source paths used for the archived evaluation are preserved in
-the historical bundle outside Git. For a portable deployment, download the
-assets into `checkpoints/bridge_f_v1/` and update the paths in a copied bundle
-file; never edit the recorded hashes.
+the historical bundle outside Git. Download the assets with
+`scripts/download_modelscope_assets.py`; never edit the recorded hashes.
 
 ## Reported reference
 
