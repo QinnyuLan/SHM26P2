@@ -1,0 +1,283 @@
+% !TEX program = xelatex
+\documentclass[UTF8,a4paper,11pt]{ctexart}
+\usepackage[a4paper,margin=2.35cm]{geometry}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{booktabs,longtable,tabularx,array,multirow}
+\usepackage{graphicx,xcolor,hyperref,cleveref}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit,calc,shapes.geometric}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{siunitx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\hypersetup{colorlinks=true,linkcolor=blue!60!black,citecolor=blue!60!black,urlcolor=blue!60!black,pdftitle={Bridge-RGS}}
+\setlist{nosep,leftmargin=2em}
+\newcommand{\method}{\textsc{Bridge-RGS}}
+\newcommand{\DINO}{\textsc{DINOv3}}
+\newcommand{\GS}{3D Gaussian Splatting}
+\newcommand{\mIoU}{\ensuremath{\mathrm{mIoU}}}
+\newcommand{\PSNR}{\ensuremath{\mathrm{PSNR}}}
+\newcommand{\LPIPS}{\ensuremath{\mathrm{LPIPS}}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\R}{\mathbb{R}}
+\title{Bridge-RGS：相机鲁棒、结构自适应的桥梁 RGB--语义联合高斯重建}
+\author{面向 IC-SHM 2026 Project 2 的可复现实验报告}
+\date{\today}
+\begin{document}
+\maketitle
+\begin{abstract}
+桥梁巡检场景要求从有限相机轨迹同时恢复可视化质量较高的 RGB 场景和官方五类语义掩码。本文报告 \method{}，一种共享场景坐标、显式语义属性与二维视图条件精修相结合的桥梁 Gaussian 重建系统。系统以 \GS{} 为几何表示，以 ModelScope 发布的高容量 \DINO{} ViT-H+/16 作为冻结语义教师，并引入投影可靠性、多视图语义融合、归一化梯度增密、相机残差诊断和多场 RGB 融合作为可解释的训练与部署组件。我们同时记录了大量失败或未采用的候选，避免将模型替换、容量增加和成员平均误写为已证实的新算法。
+
+在固定官方传感器、50 张 RGB 留出视角和其中 41 张语义标注视角的共同原图协议上，最终工程版本 F 达到 \PSNR{}=30.236593\,dB、SSIM=0.875024、\LPIPS{}=0.259300 和五类 \mIoU{}=95.109016\%。相对本地同协议 Swin-L 参考，PSNR 提高 0.835644\,dB，\mIoU{} 提高 0.790633 个百分点，且三个 RGB 指标均改善。相对前一版本 E，F 的 PSNR 进一步提高 0.200932\,dB，语义混淆矩阵保持不变。报告也给出与同学目录的协议边界、计算成本、失败模式和复现步骤。上述结果支持当前工程交付，不等同于跨场景或同预算的赛事盲测胜出；学术创新应由后续严格机制消融继续验证。
+\end{abstract}
+\noindent\textbf{关键词：}桥梁巡检；3D Gaussian Splatting；DINOv3；语义渲染；相机不确定性；多视图融合；可复现评测
+
+\section{引言}
+桥梁巡检图像同时包含宽阔背景、细长拉索、桥塔和局部基础结构。对 RGB 重建而言，纹理、曝光和高频边界决定感知质量；对语义重建而言，遮挡、投影错位以及标签中对索间区域的二维定义又会造成不同的误差结构。若分别训练 RGB 场和二维分割器，输出难以保持跨视角几何一致性；若只把二维伪标签直接写入高斯属性，又容易把教师偏差固化到错误的三维位置。
+
+本文的目标不是提出一个脱离已有工作的全新渲染原语，而是把桥梁数据的相机约束、DINOv3 密集表征和显式语义高斯组织成一条可检查的相机输入到 RGB/ID-mask 输出链路。我们的实现包含三层设计。第一，共享三维位置和透明度排序，同时保存 RGB 外观与低维语义特征，使两种输出采用相同可见性。第二，冻结高容量教师产生软语义概率，再结合投影可靠性、教师熵和多视图一致性进行融合；二维精修头只对三维先验作有界、视图条件的残差。第三，使用归一化绝对梯度、结构预算和相机残差诊断安排增密与独立场融合，以避免把数值优化现象直接当作物理相机校正。
+
+本文的主要贡献和工程交付边界如下：
+\begin{enumerate}
+  \item 给出一套针对官方桥梁传感器的共享几何 RGB--语义 Gaussian 管线，包括数据准备、教师推理、联合优化、渲染和独立 CPU 评分。
+  \item 实现 DINOv3 ViT-H+/16 的多层教师--解码器路径、软伪标签融合和显式三维语义渲染，并保留 raw-3D 与最终精修两类输出。
+  \item 建立 50/41 留出协议、共同原图网格、配对 bootstrap 区间、逐像素混淆矩阵和来源/模型哈希审计，报告正面和负面实验。
+  \item 发布可用的工程版本 F、ModelScope 资产快照和 uv 环境；明确声明其对同学目录的比较限制以及尚未被严格消融支持的创新假设。
+\end{enumerate}
+
+\section{相关工作与研究定位}
+\subsection{Gaussian 场景表示}
+\GS{} 用带有均值、协方差、透明度和视角相关颜色的高斯集合替代显式网格或隐式神经场，在训练和渲染效率之间取得了实用平衡\cite{kerbl2023gaussian}。本文沿用其可微投影和 alpha 合成接口；抗混叠、绝对梯度和 MCMC 式策略均视为已有工程组件，而非独立贡献。与单一 RGB 场相比，本文的语义高斯为每个点增加一个可学习特征向量，经共享分类器得到五类概率，再沿 RGB 的排序和透明度合成。
+
+\subsection{密集视觉教师与三维语义}
+自监督视觉基础模型能够提供比颜色更稳定的区域表征。DINOv2 证明了无需人工标签也能获得可迁移的密集特征\cite{ocal2023dinov2}；本项目以 ModelScope 中的 DINOv3 ViT-H+/16 权重替代初步方案中的旧骨干，并固定权重 SHA-256。DINOv3 只承担二维教师角色，三维一致性由高斯渲染和相机轨迹承担；因此“换用 DINOv3”本身不构成新的蒸馏范式。Feature 3DGS 已展示将二维基础模型特征蒸馏到可渲染高斯场的路线\cite{jiang2024feature3dgs}，本文的区别在于桥梁专用的投影可靠性、官方 ID-mask 输出和多场部署约束。
+
+\subsection{研究边界}
+投影不确定性和位姿鲁棒 Gaussian 已有研究基础\cite{zhao2024robust}; 因此本文不宣称首次解决位姿后验、真实标定恢复或通用相机鲁棒性。本文的研究变量是：在已固定官方传感器和有限训练轨迹下，可靠性是否能够改善教师监督的跨视角传输，以及归一化层选择是否能够改善 RGB 场成员的有效对应。实验结果对前者尚未给出独立、稳定的机制收益，对后者只给出有限的归一化条件对照证据。
+
+\section{问题定义与数据协议}
+给定训练相机集合 $\mathcal{C}_{\mathrm{tr}}=\{(K_i,T_i,I_i)\}$ 和有限的语义标注 $Y_i$，目标是学习一个场景状态 $\Theta$，对未提供目标照片的相机 $(K,T)$ 输出
+\begin{equation}
+  (\widehat I(K,T),\widehat M(K,T))=\mathcal{R}_{\Theta}(K,T),
+\end{equation}
+其中 $\widehat I\in[0,1]^{H\times W\times3}$，$\widehat M\in\{0,1,2,3,4\}^{H\times W}$。五类 ID 的语义约定为 0 背景、1 桥面、2 拉索、3 桥塔、4 基础。推理阶段只读取模型、训练来源照片/缓存和输入相机，不读取目标 RGB、目标 mask 或历史预测 PNG。
+
+正式采用协议固定官方传感器为 $1320\times989$，内参
+\[
+K=\begin{bmatrix}925.701619&0&660\\0&925.701619&494.5\\0&0&1\end{bmatrix},\qquad
+\mathbf d=(0.008987863,0,0,0,0),
+\]
+并使用原始畸变图像网格计算最终指标。50 张视角用于 RGB，41 张拥有官方 JSON 标签的视角用于语义；训练使用 350 张 TRAIN 来源照片。该划分与同学目录中 RGB148/SEM380 的全量拟合数字不同，不能直接相减并解释为泛化提升。
+
+\section{方法}
+\subsection{共享几何与双头属性}
+场景由 $N$ 个高斯组成。第 $j$ 个高斯参数为
+\begin{equation}
+  g_j=(\boldsymbol\mu_j,\boldsymbol{\Sigma}_j,\alpha_j,\mathbf c_j,\mathbf z_j),
+\end{equation}
+其中 $\boldsymbol\mu_j\in\R^3$、$\boldsymbol{\Sigma}_j$ 为三维协方差、$\alpha_j$ 为不透明度、$\mathbf c_j$ 为 RGB/球谐外观，$\mathbf z_j\in\R^{16}$ 为语义特征。对于相机射线按深度排序后的高斯序列，颜色渲染为
+\begin{equation}
+  \widehat{\mathbf C}(\mathbf p)=\sum_{j\in\mathcal{V}(\mathbf p)}w_j(\mathbf p)\,\mathbf c_j(\mathbf v),
+  \quad w_j=\alpha_j(\mathbf p)\prod_{k<j}(1-\alpha_k(\mathbf p)).
+\end{equation}
+语义场先通过共享分类器得到 $\mathbf q_j=\operatorname{softmax}(W\mathbf z_j+b)$，再用同一组 $w_j$ 合成 $\mathbf p_{3D}(\mathbf p)=\sum_jw_j\mathbf q_j$。这样，RGB 和 raw-3D 语义在几何上共享可见性，而不会各自学习互相矛盾的深度顺序。
+
+\subsection{DINOv3 教师与多尺度解码器}
+冻结 ModelScope DINOv3 ViT-H+/16，参数规模约 $8.41\times10^8$。从多个 transformer 层抽取特征，经线性投影、上采样和 DPT 风格融合得到语义 logits；同时保留浅层 RGB 细节支路和边界头。教师概率为 $p_T=\operatorname{softmax}(h_T(I))$。训练中使用弱/强光度增强的一致性，解码器采用 EMA 副本稳定伪标签；这部分是成熟教师--学生范式的工程实现，而非声称原创。
+
+\subsection{投影可靠性与多视图融合}
+相机和点的局部误差通过投影 Jacobian 传播为像素椭圆的质量代理。对候选教师概率计算熵 $H(p_T)$、可见性、跨视角一致性和投影覆盖度，形成软权重
+\begin{equation}
+  \rho_i(\mathbf p)=\exp(-\tau H(p_{T,i}))\,v_i(\mathbf p)\,s_i(\mathbf p),
+  \qquad
+  \widetilde p_T=\frac{\sum_i\rho_i p_{T,i}}{\sum_i\rho_i+\varepsilon}.
+\end{equation}
+$\rho$ 用于样本接受与监督强度，并不被解释为经过覆盖率校准的完整 BA 后验。语义损失由人工标签、教师软目标和 raw-3D 交叉熵组成：
+\begin{equation}
+\mathcal L_{sem}=\mathcal L_{CE}(p_{2D},Y)+\lambda_T\,\mathrm{KL}(\widetilde p_T\|p_{2D})
++\lambda_3\,\mathcal L_{CE}(p_{3D},Y)+\lambda_b\mathcal L_{boundary}.
+\end{equation}
+
+\subsection{有界视图条件精修}
+最终输出还使用一个输入为 RGB、深度、alpha、渲染特征和 $p_{3D}$ 的轻量多尺度头。为限制二维头完全覆盖三维先验，输出写为
+\begin{equation}
+  p_{final}=\operatorname{softmax}(\log(p_{3D}+\epsilon)+r),
+  \qquad |r_c|\le B,
+\end{equation}
+其中默认 $B=6$。该设计使最终掩码可以表达视图条件的边界和遮挡，同时保留可解释的显式三维概率。报告同时保存 $p_{3D}$ 与 $p_{final}$；后者的高分不能被描述为 raw 三维语义精度。
+
+\subsection{归一化梯度与结构预算}
+RGB 和语义的高斯更新采用按参数块归一化的绝对梯度统计，减少高分辨率、颜色尺度和语义通道之间的数量级偏差。每次增密将候选分为保留、克隆和结构分裂，并受最大高斯数与最小多视图支持约束。相机残差模块只在训练诊断中计算六维小扰动的有限差分 Jacobian，求带先验的受限最小二乘候选；验证重渲染失败时丢弃候选。测试相机不做在线优化。
+
+\subsection{多场 RGB 融合}
+当前 F 使用三套独立场：约 996,009 点的 IBGS RGB 场、498,136 点的 H3 语义场和 500,000 点的 MCMC RGB 场。两个 RGB 场通过固定成员与颜色头融合，语义保持 H3+DINOv3 路径，从而在不改变已核验语义混淆矩阵的情况下提高 RGB。该融合是工程部署策略，不被写成新的神经渲染原语。
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[node distance=7mm and 9mm,>=Latex,font=\small]
+\tikzset{box/.style={draw,rounded corners,align=center,minimum height=9mm,minimum width=27mm,fill=blue!5}, arrow/.style={->,thick}}
+\node[box] (data) {官方相机\\+ TRAIN RGB/标签};
+\node[box,right=of data] (geo) {SfM/几何初始化\\共享高斯位置};
+\node[box,above right=of geo] (teacher) {冻结 DINOv3 H+\\多层解码器};
+\node[box,below right=of geo] (rgb) {RGB 场\\SH/颜色头};
+\node[box,right=29mm of geo] (fusion) {投影可靠性\\多视图软融合};
+\node[box,right=of fusion] (joint) {语义高斯\\raw-3D + 有界精修};
+\node[box,right=of joint] (render) {新相机\\RGB / ID mask};
+\draw[arrow] (data)--(geo);
+\draw[arrow] (geo)--(teacher);
+\draw[arrow] (geo)--(rgb);
+\draw[arrow] (teacher)--(fusion);
+\draw[arrow] (rgb)--(fusion);
+\draw[arrow] (fusion)--(joint);
+\draw[arrow] (rgb.east)--(joint.west);
+\draw[arrow] (joint)--(render);
+\end{tikzpicture}
+\caption{Bridge-RGS 的训练与推理数据流。RGB 与语义共享空间几何和可见性；教师只在训练/来源缓存阶段使用，测试相机不需要真实照片。}
+\label{fig:pipeline}
+\end{figure}
+
+\section{实现与复现}
+\subsection{软件与资产}
+代码使用 Python 3.11--3.12，依赖通过 uv 和提交的 \texttt{uv.lock} 管理，核心组件包括 PyTorch 2.8、gsplat 1.5.3、Transformers、ModelScope、NumPy 和 LPIPS。数据集、DINOv3 权重和训练检查点不放入 Git；它们发布在 ModelScope 数据集\href{https://modelscope.cn/datasets/sky931/SHM2026/files}{sky931/SHM2026}，仓库提供下载和 SHA-256 校验脚本。该组织方式避免 Git 历史被多 GB 二进制污染，也使数据、教师和 F 组件能够按清单复现。
+
+\subsection{训练阶段}
+训练先以 RGB 和几何损失建立稳定的共享场，再在 \texttt{semantic\_start} 后启用语义属性和教师损失，最后训练有界精修头。典型 30,000 步配置使用渐进分辨率、2000 点背景初始化、最大约 600,000 点单场预算；最终 F 的多场部署使用更高总容量。每个阶段保存配置、输入哈希、checkpoint 和评价回执。训练源图可用于生成教师缓存；正式验证图只在冻结预测落盘后被评分进程读取。
+
+\begin{algorithm}[t]
+\caption{相机输入到双输出的部署流程}
+\label{alg:deploy}
+\begin{algorithmic}[1]
+\Require 输入相机 $(K,T)$，F bundle，TRAIN 来源缓存
+\Ensure RGB PNG 和单通道 ID-mask PNG
+\State 校验 bundle、模型和来源缓存 SHA-256
+\State 依据距离和方向阈值选择至多四个 TRAIN 邻居
+\State 对 IBGS、H3、MCMC 三场执行可见性排序和 alpha 合成
+\State 融合两个 RGB 场并得到 H3 的 $p_{3D}$
+\State 用 DINOv3 头的缓存/前向概率与 $p_{3D}$ 计算 $p_{final}$
+\State 将 $\arg\max_c p_{final,c}$ 映射为官方 0--4 ID，保存 PNG
+\State 禁止读取目标照片、目标标签和历史预测
+\end{algorithmic}
+\end{algorithm}
+
+\section{实验设置}
+\subsection{评价指标}
+RGB 使用原图像素的
+\begin{equation}
+\PSNR=10\log_{10}\frac{1}{\mathrm{MSE}},
+\end{equation}
+并报告 SSIM 和 LPIPS（后者越低越好）。语义报告五类 pooled confusion matrix 的平均 IoU：
+\begin{equation}
+\mIoU=\frac{1}{5}\sum_{c=0}^{4}\frac{TP_c}{TP_c+FP_c+FN_c}.
+\end{equation}
+此外保存前景 mIoU、拉索 IoU、边界 F1 和 raw-3D mIoU。所有正式差异按同名相机配对，并使用 5000 次 bootstrap 的双侧 95\% 区间；独立 CPU 审计以 LabelMe 顺序重绘标签、重建逐图混淆矩阵和 RGB 指标。
+
+\subsection{主结果}
+\begin{table}[t]
+\centering
+\caption{共同原图协议上的正式留出结果。RGB 为 50 视角，语义为 41 视角。}
+\label{tab:main}
+\begin{tabular}{lrrrr}
+\toprule
+系统 & PSNR $\uparrow$ & SSIM $\uparrow$ & LPIPS $\downarrow$ & 五类 $\mIoU\uparrow$\\
+\midrule
+本地 SEM386-style Swin-L 参考 & 29.400950 & 0.870650 & 0.271237 & 94.318382\%\\
+工程版本 E & 30.035661 & 0.874421 & 0.264742 & 95.109016\%\\
+\textbf{工程版本 F} & \textbf{30.236593} & \textbf{0.875024} & \textbf{0.259300} & \textbf{95.109016\%}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+F 相对本地参考的配对差异为 PSNR +0.835644\,dB（95\% 区间 [0.564120,1.139829]）、SSIM +0.004374、LPIPS -0.011937、\mIoU{} +0.790633 个百分点（区间 [0.136189,1.653615]）。相对 E，F 的 PSNR +0.200932\,dB（区间 [0.111521,0.307454]），SSIM +0.000603，LPIPS -0.005442，而语义混淆矩阵逐字节不变。这说明 F 的 RGB 成员替换在当前协议下没有损伤已选语义，但不能把固定组合的收益归因于某一个单场机制。
+
+\subsection{与同学目录的对照}
+\begin{table}[t]
+\centering
+\caption{与 `project\_progress\_20260918` 的协议分层对照。}
+\label{tab:peer}
+\begin{tabular}{lrrr}
+\toprule
+条目与协议 & RGB PSNR & RGB SSIM & 五类 $\mIoU$\\
+\midrule
+同学 RGB148+SEM380，全量拟合 300 视角 & 23.305737 & 0.896586 & 95.306455\%\\
+F，全量复核 300 个有标签视角 & \textbf{31.095728} & 0.876151 & \textbf{96.590043\%}\\
+同学 SEM386 Dev30 留出（记录值） & -- & -- & 93.7418\%\\
+F，正式 50/41 留出 & 30.236593 & 0.875024 & 95.109016\%\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+全量表显示 F 在 PSNR 和 mIoU 上高于同学目录记录，但 SSIM 较低，而且训练视角、检查点和预算并不完全匹配，因此它只是工程复核对照。正式留出结果优先于全量拟合数字；对同学 Dev30 只能说明数值上高于公开记录，不能宣称精确复现或赛事盲测胜出。
+
+\subsection{消融与负面结果}
+\begin{table}[t]
+\centering
+\caption{关键候选的终点评价与采用决定。未采用结果保留用于防止选择性报告。}
+\label{tab:ablations}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{3.3cm} X r r l}
+\toprule
+候选 & 唯一主要变化 & PSNR & 五类 $\mIoU$ & 决定\\
+\midrule
+H3+DINOv3 固定组合 & 三维 H3 与冻结教师各半 & 29.400950 & 95.109016\% & E 基线\\
+归一化 top4 对照 & 层选择与匹配置换控制 & +0.045201 dB（相对控制） & -- & 有限机制证据\\
+渲染域教师适配 & 350 TRAIN 渲染图继续训练 2000 步 & -- & 94.415452\% & 低于 F\\
+固定 RGB 加权 $\alpha=.6$ & 调整两 RGB 场权重 & 30.252777 & -- & PSNR 门失败\\
+warm-IBGS 端口 & 来源输入与稳定 AA 训练 & 29.846757 & -- & 低于 E\\
+DINOv3 7B 容量对照 & 更大教师容量 & -- & 95.18771\% & 区间跨零\\
+连续语义几何梯度 & joint/PCGrad & -- & 94.932812/94.930343\% & 最终退化\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+归一化 top4 相对匹配训练的层置换控制提升 0.045201 dB，95\% 区间 [0.020287,0.068611]，SSIM 提升 0.000828；LPIPS 区间跨零。这个结果支持“归一化条件下层对应关系可能影响优化”的有限假设，但低于 F，不能包装为完整系统的独立主贡献。渲染域教师、7B 扩容、普通域适配、连续语义位置修正和多个结构交换均未通过预设采用门；这些负结果是报告研究边界的重要组成部分。
+
+\subsection{成本、鲁棒性与失败模式}
+F 包含三套独立场，共 1,994,145 个高斯、约 66,095 个 RGB 头参数、840,592,640 参数的 DINOv3 H+ 教师、350 张来源照片及约 21.93 GB 层缓存。52 个相机（50 正式视角，加改名和位姿压力视角）共完成 156 次场渲染；完整导出约 118.2 秒，峰值 CUDA 分配约 7.81 GB。推理只支持训练银行对应的官方传感器和至少一个满足距离/方向阈值的 TRAIN 邻居；没有邻居时明确失败，不承诺任意相机内参或场外位姿。
+
+实际核验包括：改名不影响来源选择；对同一相机施加 $w2c[0,3]+0.1$ 后 RGB 和 mask 均改变；mask 只含 0--4；50 张 RGB 和 50 张 mask 重新落盘并经独立 CPU 复核。早期冻结教师接口缺失导致的 v1 失败保留在运行回执中，v2 仅修正多余接口调用后重新执行，未调整模型数学。
+
+\section{讨论}
+\subsection{结果含义}
+当前结果表明，在严格固定的官方传感器和共同原图网格上，多场 RGB 融合与 DINOv3 语义路径能同时提供较高 RGB 质量和五类掩码质量。共享可见性使 RGB 和语义的空间投影一致；有界精修允许最终 mask 处理视图条件边界，而 raw-3D 输出保持对显式三维属性的审计。对工程部署而言，ModelScope 清单、模型哈希和 uv 锁定环境比单个 checkpoint 更重要，因为 F 依赖来源银行、缓存和三个场的协同。
+
+\subsection{学术创新的诚实边界}
+本文最有研究价值的假设是“相机/投影可靠性可以指导语义教师在跨视角传输中的权重”和“归一化特征层对应可影响多场 RGB 成员质量”。现有实验只为后者提供了小幅、受条件限制的正证据；前者的多数长训练候选没有超过 F。DINOv3、DPT 解码器、EMA、一致性损失、Gaussian rasterization、绝对梯度和固定成员平均都已有先例或属于工程组合。因而本报告将 F 定义为高质量、可复现的工程方案，并把机制创新表述为待进一步检验的研究假设，而非“首次”结论。
+
+\subsection{局限与未来工作}
+首先，实验集中于单桥和单一官方传感器，不能推断跨桥梁、跨焦距或跨天气泛化。其次，F 的三场与 21.93 GB 缓存带来较高存储和部署成本；只复制一个 `.pt` 文件不能运行。第三，最终 mIoU 依赖二维精修，raw-3D mIoU 明显更低，说明显式三维语义仍有改进空间。第四，同学目录缺少完整 Dev30/RGB150 检查点和清单，严格公平重训尚未完成。后续应在多个桥梁、匹配训练预算和固定随机种子下，补齐投影各向同性对照、同一教师不同层对应、三场成员的单变量训练以及 raw/final 双重语义指标。
+
+\section{结论}
+本文完成了一个从官方相机输入到 RGB 与语义 ID-mask 输出的 Bridge-RGS 研究型实现，并以 ModelScope 管理数据、DINOv3 权重和训练检查点。工程版本 F 在 50/41 共同原图留出协议上达到 30.236593 dB PSNR、0.875024 SSIM、0.259300 LPIPS 和 95.109016\% 五类 mIoU；相对本地同协议参考，RGB 与语义均有明确提升。报告同时保留了全量拟合、负面消融、资源成本和协议限制。该结果足以作为公开仓库和比赛工程交付；若要形成可发表的学术主张，还需要跨场景、匹配预算和更严格的机制隔离实验。
+
+\section*{可复现清单}
+\begin{itemize}
+  \item 代码仓库：\href{https://github.com/QinnyuLan/SHM26P2}{github.com/QinnyuLan/SHM26P2}。
+  \item 大型资产：\href{https://modelscope.cn/datasets/sky931/SHM2026/files}{ModelScope sky931/SHM2026}，含 `dataset/`、`models/dinov3-vith16plus/`、`checkpoints/bridge\_f\_v1/` 和 `manifest.sha256`。
+  \item 下载命令：\texttt{uv run python scripts/download\_modelscope\_assets.py --output release\_assets/SHM2026}。
+  \item 部署入口：\texttt{uv run bridge-rgs render --checkpoint ... --cameras ... --output ...}；F 的多场完整入口和输入限制见仓库 `docs/ibgs\_joint\_deployment.md`。
+  \item 主结果与协议：仓库 `docs/ibgs\_joint\_bundle\_results.md`、`docs/project\_progress\_comparison.md`、`docs/experiment\_history\_20260927.md`。
+\end{itemize}
+
+\bibliographystyle{plain}
+\bibliography{refs}
+\appendix
+\section{符号与实现对应}
+\begin{table}[h]
+\centering
+\begin{tabular}{ll}
+\toprule
+符号 & 工程含义\\
+\midrule
+$\boldsymbol\mu,\boldsymbol{\Sigma},\alpha$ & Gaussian 的位置、协方差和不透明度\\
+$\mathbf c$ & RGB/球谐颜色属性\\
+$\mathbf z$ & 16 维语义特征\\
+$p_{3D}$ & 共享可见性合成的 raw 三维语义概率\\
+$r$ & 有界二维视图条件精修残差\\
+$\rho$ & 教师熵、可见性和投影支持构成的软可靠性权重\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{报告中的指标解释约定}
+所有带有“F 正式结果”的数值都来自冻结预测落盘后再读取 GT 的流程；“全量复核”仅用于解释同学目录中的展示数字，不能替代留出。不同训练历史、不同视角集合或不同渲染网格之间不得直接作因果差分。负面结果保留是为了防止把单个开发集最高点误写成稳定泛化收益。
+\end{document}
