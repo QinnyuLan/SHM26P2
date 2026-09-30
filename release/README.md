@@ -44,6 +44,23 @@ uv run python scripts/download_modelscope_assets.py \
   --output release_assets/SHM2026
 ```
 
+As an alternative mirror, the complete data and checkpoint bundle is also
+available from [Baidu Netdisk](https://pan.baidu.com/s/1fW0RlozL8_U7-BgCsQHbVQ?pwd=89s8)
+with extraction password `89s8`. After extraction, place the bundle at
+`release_assets/SHM2026/` so that `manifest.sha256`, `dataset/`,
+`checkpoints/`, and `models/` are immediate children. Verify the extracted
+files before running:
+
+```bash
+(cd release_assets/SHM2026 && sha256sum -c manifest.sha256)
+uv run python release/code/verify_release.py \
+  --assets-root release_assets/SHM2026
+```
+
+The second command checks the release contract and the three full-view
+checkpoint digests. The local mirror is an alternative transport only; the
+ModelScope manifest remains the authoritative file list.
+
 The full-view checkpoints are under
 `release_assets/SHM2026/checkpoints/bridge_full400_v1/`:
 
