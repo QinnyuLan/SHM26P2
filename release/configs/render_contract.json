@@ -1,0 +1,22 @@
+{
+  "pixel_protocol": "colmap_corner_v2",
+  "coordinate_convention": "COLMAP/OpenCV world-to-camera; x right, y down, z forward",
+  "official_sensor": {
+    "width": 1320,
+    "height": 989,
+    "K": [[925.7016189245708, 0.0, 660.0], [0.0, 925.7016189245708, 494.5], [0.0, 0.0, 1.0]],
+    "distortion_model": "SIMPLE_RADIAL",
+    "distortion": [0.008987863345268233, 0.0, 0.0, 0.0, 0.0]
+  },
+  "class_ids": {
+    "background": 0,
+    "deck": 1,
+    "stay_cable": 2,
+    "tower": 3,
+    "foundation": 4
+  },
+  "outputs": {
+    "rgb": "uint8 PNG, three channels",
+    "semantic_mask": "uint8 PNG, one channel, IDs 0 through 4"
+  }
+}

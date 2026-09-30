@@ -1,6 +1,6 @@
-# Bridge-RGS F release
+# Bridge-RGS multi-field release
 
-This directory records the reproducible model contract for the selected F
+This directory records the reproducible model contract for the selected multi-field
 deployment. The corresponding dataset, DINOv3 weights, and checkpoints are
 published at [ModelScope `sky931/SHM2026`](https://modelscope.cn/datasets/sky931/SHM2026/files).
 The source repository keeps only this lightweight contract; render caches and
@@ -10,7 +10,7 @@ historical experiment checkpoints are excluded.
 
 | Component | Role | SHA-256 |
 |---|---|---|
-| `h3_moments/02_cross/last.pt` | semantic H3 field | `22bc8a2ddb260f93cb01b17857c97b2bb0873038efdb9318545cb2bdbb045226` |
+| `h3_moments/02_cross/last.pt` | semantic depth-moment field | `22bc8a2ddb260f93cb01b17857c97b2bb0873038efdb9318545cb2bdbb045226` |
 | `rgb_mcmc_reference_500k/last.pt` | RGB MCMC field | `3796c4c73ce2189ce74153dd7b1209d88cc2d9a1bf57c9299366977cde8c876b` |
 | `teacher_render_adapt_v1/best.pt` | DINOv3 semantic decoder | `00f5b84ac9a56c39512c5b8e43f70110397923feea1a2b4c78bdffd1f5524bff` |
 | `dinov3-vith16plus/model.safetensors` | frozen DINOv3 ViT-H+/16 | `3e1d4d18b9bfa9f28fad8e9de6a783f1313532d3460efa4cd0b12521d81d1a4d` |

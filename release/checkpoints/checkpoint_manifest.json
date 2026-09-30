@@ -1,0 +1,25 @@
+{
+  "repository": "sky931/SHM2026",
+  "repository_url": "https://modelscope.cn/datasets/sky931/SHM2026/files",
+  "revision": "master",
+  "files": [
+    {
+      "path": "checkpoints/bridge_full400_v1/rgb_full400.pt",
+      "role": "full-view RGB field",
+      "bytes": 467921291,
+      "sha256": "5fafa2c28856e2c5836c096600b7dae698ac44c8069f5f85bd6eeec450b42091"
+    },
+    {
+      "path": "checkpoints/bridge_full400_v1/semantic_full400_base.pt",
+      "role": "full-view semantic warm-start",
+      "bytes": 251971585,
+      "sha256": "4f3e5b79c1eb010ddf6befbd7d8cc4cf2bd227e166c6bb4c2ae54eb90163ba4b"
+    },
+    {
+      "path": "checkpoints/bridge_full400_v1/semantic_full400_cross.pt",
+      "role": "full-view final semantic field",
+      "bytes": 188297923,
+      "sha256": "aa3a7f70521c1168a1c42e2f2c6013804c523cb795ec57495fed0f83f8113051"
+    }
+  ]
+}
