@@ -1,0 +1,83 @@
+{
+  "experiment": "full400_fit",
+  "manifest": "artifacts/prepared_corner_v2_full400/manifest.json",
+  "manifest_sha256": "c4905baeab2f72e80f4d2916f7264ff22c76ea9b19f36f58700716359fc5a4b6",
+  "stages": {
+    "full400_rgb": {
+      "config": "configs/full400_rgb.yaml",
+      "checkpoint": "runs/full400_rgb/last.pt",
+      "checkpoint_sha256": "5fafa2c28856e2c5836c096600b7dae698ac44c8069f5f85bd6eeec450b42091",
+      "checkpoint_bytes": 467921291,
+      "log_steps": 30000,
+      "final_log": {
+        "resume_fused_target_cleared": false,
+        "step": 30000,
+        "loss": 0.02894415706396103,
+        "rgb_loss": 0.0289436224848032,
+        "semantic_loss": 0.0,
+        "gaussians": 498136,
+        "elapsed_seconds": 1121.04,
+        "peak_gpu_gb": 1.516,
+        "sh_degree": 3,
+        "camera_explained_fraction": 0.0,
+        "density_absgrad_threshold": 0.0002933779323939234,
+        "splits": 1512,
+        "duplicates": 781,
+        "pruned": 429,
+        "density_candidates": 71047,
+        "density_budget": 12000,
+        "density_target_budget": 498136,
+        "density_multiview_supported": 370429,
+        "density_eligible_candidates": 71047,
+        "density_absgrad_quantiles": [
+          7.455097511410713e-05,
+          0.0003130887635052204,
+          0.0005427352152764797
+        ],
+        "opacity_reset_count": 304383,
+        "opacity_reset_step": 18000
+      }
+    },
+    "full400_semantic": {
+      "config": "configs/full400_semantic.yaml",
+      "checkpoint": "runs/full400_semantic/last.pt",
+      "checkpoint_sha256": "4f3e5b79c1eb010ddf6befbd7d8cc4cf2bd227e166c6bb4c2ae54eb90163ba4b",
+      "checkpoint_bytes": 251971585,
+      "log_steps": 8000,
+      "final_log": {
+        "resume_fused_target_cleared": false,
+        "step": 8000,
+        "loss": 0.05643413960933685,
+        "rgb_loss": 0.025083616375923157,
+        "semantic_loss": 0.029985960572957993,
+        "gaussians": 498136,
+        "elapsed_seconds": 752.63,
+        "peak_gpu_gb": 5.352,
+        "sh_degree": 3
+      }
+    },
+    "full400_semantic_moments_cross": {
+      "config": "configs/full400_semantic_moments_cross.yaml",
+      "checkpoint": "runs/full400_semantic_moments_cross/last.pt",
+      "checkpoint_sha256": "aa3a7f70521c1168a1c42e2f2c6013804c523cb795ec57495fed0f83f8113051",
+      "checkpoint_bytes": 188297923,
+      "log_steps": 3000,
+      "final_log": {
+        "resume_fused_target_cleared": false,
+        "refiner_crop": null,
+        "refiner_supervised_pixels": 1290806,
+        "refiner_crop_view": "285.png",
+        "step": 3000,
+        "loss": 0.09864955395460129,
+        "rgb_loss": 0.026598405092954636,
+        "semantic_loss": 0.07004732638597488,
+        "gaussians": 498136,
+        "elapsed_seconds": 263.11,
+        "peak_gpu_gb": 5.383,
+        "sh_degree": 3
+      }
+    }
+  },
+  "evaluation": "runs/full400_evaluation/evaluation_receipt.json",
+  "independent_generalization": false
+}

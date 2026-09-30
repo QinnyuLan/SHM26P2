@@ -206,3 +206,7 @@ uv run python scripts/summarize_results.py runs/ablations --output runs/results.
 - [SPARF](https://github.com/google-research/sparf) 是相机与辐射场优化的相关工作，不能将“优化相机”本身当作新贡献。
 - [UniMatch V2](https://github.com/LiheYoung/UniMatch-V2) 是基于强视觉骨干的半监督分割参考；本实现采用自己的冻结 DINOv3 + EMA 解码器流程，并未声称复刻其完整训练配方。
 - `SHM_2026.pdf`、`Dataset/README.md` 是本地竞赛依据；`project_progress_20260918` 是同学提供的已有实验资料。
+
+本次全量 400 视角训练的检查点也已发布在同一数据集的
+`checkpoints/bridge_full400_v1/`，包含 `rgb_full400.pt`、
+`semantic_full400_base.pt` 和最终 `semantic_full400_cross.pt`。下载脚本会一并获取这些文件，并使用更新后的 `manifest.sha256` 校验。

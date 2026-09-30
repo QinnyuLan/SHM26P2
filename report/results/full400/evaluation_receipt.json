@@ -1,0 +1,8 @@
+{
+  "checkpoint": "/home/sky/workspace/SHM2026/runs/full400_semantic_moments_cross/last.pt",
+  "checkpoint_sha256": "aa3a7f70521c1168a1c42e2f2c6013804c523cb795ec57495fed0f83f8113051",
+  "all400_fit": "/home/sky/workspace/SHM2026/runs/full400_evaluation/all400_fit/metrics.json",
+  "original50_diagnostic": "/home/sky/workspace/SHM2026/runs/full400_evaluation/original50_diagnostic/metrics.json",
+  "interpretation": "All 400 views were used during training; the historical 50/41 views therefore overlap with training and are diagnostic only.",
+  "independent_generalization": false
+}

@@ -12,3 +12,5 @@
 ```
 
 若本机已安装 TeX Live，也可以使用 `latexmk -xelatex report/main.tex`。报告中的指标来自仓库 `docs/` 的正式 F 版本结果与独立审计回执；主文明确区分留出评价、全量拟合对照和未通过采用门的负面实验。
+
+渲染视频见 [`videos/`](videos/README.md)，包括全量 400 视角模型、上一版最终模型和 301--400 无标注视角的 RGB/语义 mask 结果。全量 400 视角的 JSON 指标和训练回执见 [`results/full400/`](results/full400/README.md)。
